@@ -1,0 +1,82 @@
+{
+  "name": "llama-pong",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "connected-react-router": "^6.6.1",
+    "node-sass": "^4.13.0",
+    "ramda": "^0.26.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-modal": "^3.11.1",
+    "react-redux": "^7.1.3",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "^3.3.0",
+    "react-sizes": "^2.0.0",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0",
+    "webfontloader": "^1.6.28"
+  },
+  "devDependencies": {
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "eslint": "^6.6.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jest": "^22.21.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^1.6.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "npm-run-all": "^4.1.5",
+    "redux-mock-store": "^1.5.4",
+    "stylelint": "^12.0.1",
+    "stylelint-config-standard": "^17.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --watchAll=false",
+    "lint:js": "eslint src/",
+    "lint:css": "stylelint --config stylelint.json **/*.scss",
+    "lint": "npm-run-all lint:*",
+    "coverage": "npm test --coverage --coverageDirectory coverage --watchAll=false",
+    "verify": "npm-run-all lint test"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "<rootDir>/__mocks__/cssModuleMock.js"
+    },
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!build/**",
+      "!output/**",
+      "!config/**",
+      "!src/index.js",
+      "!src/reducers/index.js",
+      "!src/store/**",
+      "!build/**",
+      "!test/**"
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+@import '../../styles/colors.scss';
+@import '../../styles/fonts.scss';
+@import '../../styles/sizing.scss';
+
+.home {
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+
+  h1 {
+    color: $paddle-red;
+    font-family: $mainFontStyle;
+    font-size: 5em;
+    margin: 50px auto;
+    text-align: center;
+  }
+
+  .logo {
+    margin: 5px;
+    text-align: center;
+
+    img {
+      width: 300px;
+    }
+  }
+
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+
+    .button {
+      align-items: center;
+      background: $secondaryColor;
+      border-color: $secondaryColorLight;
+      color: $primaryTextColor;
+      display: flex;
+      font-size: 2em;
+      justify-content: center;
+      margin: 0 15px;
+      padding: 40px 0;
+      text-align: center;
+      width: 250px;
+
+      &:hover {
+        background: $secondaryColorLight;
+        border-color: $secondaryColor;
+      }
+
+      .buttonText {
+        font-style: italic;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $mobileWidth) {
+  .home {
+    h1 {
+      margin: 20px auto;
+    }
+
+    .buttonContainer {
+      margin: 20px auto;
+    }
+  }
+}

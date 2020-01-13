@@ -1,0 +1,11 @@
+@import '../../styles/colors.scss';
+@import '../../styles/fonts.scss';
+
+.app {
+  margin: 1px;
+  overflow: hidden;
+
+  .content {
+    margin: 1px;
+  }
+}
