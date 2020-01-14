@@ -3,12 +3,39 @@
 @import '../../styles/sizing.scss';
 
 .game {
-  align-content: center;
-  display: flex;
-  flex-direction: column;
+  border: 1px solid black;
   margin: 5px;
-  
+
   .scoreboard {
-    text-align: center;
+    align-content: center;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    position: relative;
+
+    .playerScore {
+      align-items: center;
+      display: flex;
+      font-size: 25em;
+      justify-content: center;
+      width: 50%;
+
+      .score {
+        font-family: 'Roboto Mono';
+        margin: 0 auto;
+        text-align: center;
+        user-select: none;
+        width: 95%;
+      }
+
+      &.twoDigits {
+        font-size: 25em;
+      }
+    }
+
+    hr {
+      height: 550px;
+      width: 1px;
+    }
   }
 }
