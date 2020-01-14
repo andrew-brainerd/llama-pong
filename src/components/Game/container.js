@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  navTo: path => dispatch(navTo(path))
+  navTo: (path, title) => dispatch(navTo(path, title))
 });
 
 export default compose(

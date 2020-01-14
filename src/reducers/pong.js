@@ -1,4 +1,4 @@
-import { START_GAME, UPDATE_SCORE } from '../actions/pong';
+import { SET_PAGE_TITLE, START_GAME, UPDATE_SCORE } from '../actions/pong';
 
 const initialState = {
   isGameOver: false,
@@ -10,6 +10,11 @@ const initialState = {
 
 export default function pong (state = initialState, action) {
   switch (action.type) {
+    case SET_PAGE_TITLE:
+      return {
+        ...state,
+        pageTitle: action.title
+      };
     case START_GAME:
       return {
         ...state,

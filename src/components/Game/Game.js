@@ -14,14 +14,13 @@ const Game = ({ height, scoreboard, navTo }) => {
     <div className={styles.game}>
       <div className={styles.scoreboard} style={{ height: scoreBoardHeight }}>
         <div className={styles.playerScore}>
-        <div
+          <div
             className={styles.incrementScore}
             onClick={() => setPlayer1Score(player1Score + 1)}
           >
             <div className={styles.arrow}>></div>
           </div>
-          <div className={styles.score}
-          >
+          <div className={styles.score}>
             {player1Score}
           </div>
           <div

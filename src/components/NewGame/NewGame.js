@@ -8,22 +8,37 @@ const NewGame = ({ navTo }) => {
   const gameId = '00000';
 
   return (
-  <div className={styles.newGame}>
-    <h1>Start A New Game</h1>
-    <div className={styles.gameOptions}>
-      Game Options Go Here
-    </div>
-    <div className={styles.buttonContainer}>
-      <Button
+    <div className={styles.newGame}>
+      {/* <h1>Start A New Game</h1> */}
+      <div className={styles.buttonContainer}>
+        <Button
+          className={styles.gameTypeButton}
+          onClick={() => navTo(GAME_ROUTE.replace(':gameId', gameId))}
+        >
+          1 Game
+        </Button>
+        <Button
+          className={styles.gameTypeButton}
+          onClick={() => navTo(GAME_ROUTE.replace(':gameId', gameId))}
+        >
+          Best of 3
+        </Button>
+        <Button
+          className={styles.gameTypeButton}
+          onClick={() => navTo(GAME_ROUTE.replace(':gameId', gameId))}
+        >
+          Best of 5
+        </Button>
+      </div>
+      {/* <Button
         className={styles.button}
         onClick={() => navTo(GAME_ROUTE.replace(':gameId', gameId))}
       >
         Start Game
-      </Button>
+      </Button> */}
     </div>
-  </div>
-);
-  };
+  );
+};
 
 NewGame.propTypes = {
   navTo: func.isRequired

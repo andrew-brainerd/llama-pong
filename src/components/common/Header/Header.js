@@ -5,13 +5,14 @@ import { HOME_ROUTE } from '../../../constants/routes';
 import logo from '../../../img/logo.png';
 import styles from './Header.module.scss';
 
-const Header = ({ isVisible, navTo }) => {
+const Header = ({ isVisible, pageTitle, navTo }) => {
   return isVisible ? (
     <div className={styles.header}>
       <div className={styles.headerContent}>
         <div className={styles.homeLink} onClick={() => navTo(HOME_ROUTE)}>
           <img src={logo} className={styles.logo} alt="logo" />
           <div className={styles.headerTitle}>LLama Pong</div>
+          {pageTitle && <><hr /><div className={styles.headerTitle}>{pageTitle}</div></>}
         </div>
         <div className={styles.appVersion}>
           v{process.env.REACT_APP_VERSION}
