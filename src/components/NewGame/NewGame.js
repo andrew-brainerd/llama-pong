@@ -1,8 +1,9 @@
 import React from 'react';
 import { number, func } from 'prop-types';
 import { GAME_ROUTE } from '../../constants/routes';
-import { NUM_GAMES } from '../../constants/pong';
+import { NUM_GAMES, PLAYER1, PLAYER2 } from '../../constants/pong';
 import Button from '../common/Button/Button';
+import TextInput from '../common/TextInput/TextInput';
 import styles from './NewGame.module.scss';
 
 const NewGame = ({ numGames, navTo, updateConfig, startGame }) => {
@@ -42,6 +43,18 @@ const NewGame = ({ numGames, navTo, updateConfig, startGame }) => {
         >
           Best of 5
         </Button>
+      </div>
+      <div className={styles.playersContainer}>
+        <TextInput
+          placeholder={'Player 1'}
+          onChange={value => updateConfig(PLAYER1, value)}
+          inputClassName={styles.playerInput}
+        />
+        <TextInput
+          placeholder={'Player 2'}
+          onChange={value => updateConfig(PLAYER2, value)}
+          inputClassName={styles.playerInput}
+        />
       </div>
       <Button
         className={[
