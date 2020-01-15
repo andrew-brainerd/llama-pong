@@ -23,23 +23,22 @@
     min-width: 850px;
 
     .gameTypeButton {
-      align-items: center;
-      background: $secondaryColor;
-      border-color: $secondaryColorLight;
-      border-radius: 7px;
-      color: $primaryTextColor;
-      display: flex;
       font-size: 2.5em;
       height: 350px;
-      justify-content: center;
-      margin: 0 auto;
+      opacity: 0.8;
       padding: 20px 0;
-      text-align: center;
-      width: 250px;
 
-      &:hover {
+      &.selected {
+        background: $secondaryColorLight;
+        border: 2px solid $paddle-ball;
+        opacity: 1;
+        transform: scale(1.1);
+      }
+
+      &:hover:not(.selected) {
         background: $secondaryColorLight;
         border-color: $secondaryColor;
+        opacity: 1;
       }
 
       .buttonText {
@@ -57,7 +56,7 @@
     display: flex;
     font-size: 1.5em;
     justify-content: center;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 20px 0;
     text-align: center;
     width: 250px;
@@ -69,6 +68,15 @@
 
     .buttonText {
       font-style: italic;
+    }
+
+    &.startButton {
+      background: $success-green-9;
+      margin-top: 100px;
+
+      &:hover {
+        background: $success-green;
+      }
     }
   }
 }

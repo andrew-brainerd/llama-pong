@@ -11,7 +11,7 @@ const Game = ({ height, scoreboard, navTo, updateScore }) => {
   const [isNewGame, setIsNewGame] = useState(true);
   const { speak } = useSpeechSynthesis();
   const scoreBoardHeight = height - 1.5 * HEADER_HEIGHT;
-  const { player1, player2 } = scoreboard;
+  const { currentScore: { player1, player2 } } = scoreboard;
 
   useEffect(() => {
     if (isNewGame) { // && player1 === 0 && player2 === 0
@@ -29,7 +29,7 @@ const Game = ({ height, scoreboard, navTo, updateScore }) => {
             className={styles.incrementScore}
             onClick={() => isScoreValid(player1 + 1) && updateScore(1, player1 + 1)}
           >
-            <div className={styles.arrow}>></div>
+            <div className={styles.arrow}>&gt;</div>
           </div>
           <div className={styles.score}>
             {player1}
@@ -38,7 +38,7 @@ const Game = ({ height, scoreboard, navTo, updateScore }) => {
             className={styles.decrementScore}
             onClick={() => isScoreValid(player1 - 1) && updateScore(1, player1 - 1)}
           >
-            <div className={styles.arrow}>></div>
+            <div className={styles.arrow}>&gt;</div>
           </div>
         </div>
         <hr style={{ height: scoreBoardHeight - 20 }} />
@@ -47,7 +47,7 @@ const Game = ({ height, scoreboard, navTo, updateScore }) => {
             className={styles.incrementScore}
             onClick={() => isScoreValid(player2 + 1) && updateScore(2, player2 + 1)}
           >
-            <div className={styles.arrow}>></div>
+            <div className={styles.arrow}>&gt;</div>
           </div>
           <div className={styles.score}>
             {player2}
@@ -56,7 +56,7 @@ const Game = ({ height, scoreboard, navTo, updateScore }) => {
             className={styles.decrementScore}
             onClick={() => isScoreValid(player2 - 1) && updateScore(2, player2 - 1)}
           >
-            <div className={styles.arrow}>></div>
+            <div className={styles.arrow}>&gt;</div>
           </div>
         </div>
       </div>
@@ -70,7 +70,8 @@ Game.propTypes = {
     player1: number,
     player2: number
   }),
-  navTo: func.isRequired
+  navTo: func.isRequired,
+  updateScore: func.isRequired
 };
 
 export default Game;

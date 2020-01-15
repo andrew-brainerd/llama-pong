@@ -1,5 +1,5 @@
 import React from 'react';
-import { bool, func } from 'prop-types';
+import { bool, string, func } from 'prop-types';
 import Notification from '../Notification/container';
 import { HOME_ROUTE } from '../../../constants/routes';
 import logo from '../../../img/logo.png';
@@ -25,6 +25,7 @@ const Header = ({ isVisible, pageTitle, navTo }) => {
 
 Header.propTypes = {
   isVisible: bool,
+  pageTitle: string,
   navTo: func.isRequired
 };
 

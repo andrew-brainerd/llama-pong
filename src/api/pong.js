@@ -1,4 +1,4 @@
-import { handleResponse, parseOptions } from './tools';
+import { handleResponse } from './tools';
 
 const basicJsonHeader = { 'Content-Type': 'application/json' };
 
