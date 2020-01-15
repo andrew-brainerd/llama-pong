@@ -1,13 +1,13 @@
 @import './colors.scss';
 
 @mixin defaultBorder {
-  border: 1px solid $accentColor;
+  border: 1px solid $paddle-gray;
 }
 
 @mixin defaultInput {
   appearance: none;
-  background: $primaryColor;
-  border: 1px solid transparent;
+  background: $secondaryColor;
+  border: 2px solid transparent;
   border-radius: 5px;
   color: $primaryTextColor;
   outline: none;
@@ -16,7 +16,8 @@
 
   &:active,
   &:focus {
-    border: 1px solid $accentColor;
+    background: $secondaryColorLight;
+    border: 2px solid $paddle-gray;
     outline: none;
   }
 }
