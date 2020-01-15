@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { number, shape, func } from 'prop-types';
+import { useSpeechSynthesis } from 'react-speech-kit';
+import { isScoreValid } from '../../utils/scoring';
 import styles from './Game.module.scss';
 
 const HEADER_HEIGHT = 120;
+const gameStartMessage = 'Welcome to LLama Pong. Lets get the game started!';
 
-const Game = ({ height, scoreboard, navTo }) => {
-  const [player1Score, setPlayer1Score] = useState(5);
-  const [player2Score, setPlayer2Score] = useState(8);
+const Game = ({ height, scoreboard, navTo, updateScore }) => {
+  const [isNewGame, setIsNewGame] = useState(true);
+  const { speak } = useSpeechSynthesis();
   const scoreBoardHeight = height - 1.5 * HEADER_HEIGHT;
   const { player1, player2 } = scoreboard;
+
+  useEffect(() => {
+    if (isNewGame) { // && player1 === 0 && player2 === 0
+      // speak({ text: gameStartMessage });
+      console.log(`%c${gameStartMessage}`, 'color: orange; font-size: 24px');
+      setIsNewGame(false);
+    }
+  }, [isNewGame, speak]);
 
   return (
     <div className={styles.game}>
@@ -16,16 +27,16 @@ const Game = ({ height, scoreboard, navTo }) => {
         <div className={styles.playerScore}>
           <div
             className={styles.incrementScore}
-            onClick={() => setPlayer1Score(player1Score + 1)}
+            onClick={() => isScoreValid(player1 + 1) && updateScore(1, player1 + 1)}
           >
             <div className={styles.arrow}>></div>
           </div>
           <div className={styles.score}>
-            {player1Score}
+            {player1}
           </div>
           <div
             className={styles.decrementScore}
-            onClick={() => setPlayer1Score(player1Score - 1)}
+            onClick={() => isScoreValid(player1 - 1) && updateScore(1, player1 - 1)}
           >
             <div className={styles.arrow}>></div>
           </div>
@@ -34,16 +45,16 @@ const Game = ({ height, scoreboard, navTo }) => {
         <div className={styles.playerScore}>
           <div
             className={styles.incrementScore}
-            onClick={() => setPlayer2Score(player2Score + 1)}
+            onClick={() => isScoreValid(player2 + 1) && updateScore(2, player2 + 1)}
           >
             <div className={styles.arrow}>></div>
           </div>
           <div className={styles.score}>
-            {player2Score}
+            {player2}
           </div>
           <div
             className={styles.decrementScore}
-            onClick={() => setPlayer2Score(player2Score - 1)}
+            onClick={() => isScoreValid(player2 - 1) && updateScore(2, player2 - 1)}
           >
             <div className={styles.arrow}>></div>
           </div>

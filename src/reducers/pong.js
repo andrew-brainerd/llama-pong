@@ -3,8 +3,8 @@ import { SET_PAGE_TITLE, START_GAME, UPDATE_SCORE } from '../actions/pong';
 const initialState = {
   isGameOver: false,
   scoreboard: {
-    player1: 10,
-    player2: 9
+    player1: 0,
+    player2: 0
   }
 };
 
@@ -24,9 +24,12 @@ export default function pong (state = initialState, action) {
         }
       };
     case UPDATE_SCORE:
-      return {
+      return { //[`player${action.playerNum}`]]: action.newScore
         ...state,
-        [state.scoreboard[action.player]]: action.newScore
+        scoreboard: {
+          ...state.scoreboard,
+          [`player${action.playerNum}`]: action.newScore
+        }
       };
     default:
       return state;

@@ -6,4 +6,4 @@ export const setPageTitle = title => ({ type: SET_PAGE_TITLE, title });
 
 export const startGame = message => ({ type: START_GAME, message });
 
-export const updateScore = (player, newScore) => ({ type: UPDATE_SCORE, player, newScore });
+export const updateScore = (playerNum, newScore) => ({ type: UPDATE_SCORE, playerNum, newScore });

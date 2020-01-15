@@ -3,7 +3,6 @@
 @import '../../styles/sizing.scss';
 
 .game {
-  border: 1px solid black;
   margin: 5px;
 
   .scoreboard {
@@ -22,7 +21,7 @@
 
       .incrementScore,
       .decrementScore {
-        border-bottom: 1px solid transparent;
+        border: 1px solid transparent;
         cursor: default;
         font-size: 2em;
 
@@ -64,7 +63,7 @@
       .score {
         font-family: 'Roboto Mono';
         font-size: 25em;
-        margin: 0 auto;
+        margin: 50px auto;
         text-align: center;
         user-select: none;
         width: 95%;
