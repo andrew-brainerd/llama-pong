@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   navTo: (path, title) => dispatch(navTo(path, title)),
   updateConfig: (key, value) => dispatch(updateConfig(key, value)),
-  startGame: () => dispatch(startGame())
+  startGame: options => dispatch(startGame(options))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewGame);

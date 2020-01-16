@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { number, shape, func } from 'prop-types';
 import { useSpeechSynthesis } from 'react-speech-kit';
-import { isScoreValid } from '../../utils/scoring';
+import { isScoreValid, getGameStatus } from '../../utils/scoring';
+import GameOver from './GameOver/container';
 import styles from './Game.module.scss';
 
 const HEADER_HEIGHT = 120;
@@ -9,6 +10,7 @@ const gameStartMessage = 'Welcome to LLama Pong. Lets get the game started!';
 
 const Game = ({ height, scoreboard, navTo, updateScore }) => {
   const [isNewGame, setIsNewGame] = useState(true);
+  const [gameStatus, setGameStatus] = useState({});
   const { speak } = useSpeechSynthesis();
   const scoreBoardHeight = height - 1.5 * HEADER_HEIGHT;
   const { currentScore: { player1, player2 } } = scoreboard;
@@ -21,7 +23,12 @@ const Game = ({ height, scoreboard, navTo, updateScore }) => {
     }
   }, [isNewGame, speak]);
 
-  return (
+  useEffect(() => {
+    setGameStatus(getGameStatus(scoreboard));
+  }, [scoreboard]);
+
+  return gameStatus.isGameOver ?
+    <GameOver winningPlayerNum={gameStatus.winningPlayerNum} /> : (
     <div className={styles.game}>
       <div className={styles.scoreboard} style={{ height: scoreBoardHeight }}>
         <div className={styles.playerScore}>

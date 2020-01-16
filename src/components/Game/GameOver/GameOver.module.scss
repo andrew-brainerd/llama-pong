@@ -1,0 +1,15 @@
+.gameOver {
+  font-family: 'Roboto Mono';
+  font-size: 2em;
+  margin: 50px auto;
+  text-align: center;
+
+  .message {
+    font-size: 3em;
+    margin: 30px auto;
+  }
+
+  .playAgainButton {
+    margin: 30px auto;
+  }
+}

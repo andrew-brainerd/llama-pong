@@ -7,6 +7,6 @@ export const setPageTitle = title => ({ type: SET_PAGE_TITLE, title });
 
 export const updateConfig = (key, value) => ({ type: UPDATE_CONFIG, key, value });
 
-export const startGame = message => ({ type: START_GAME, message });
+export const startGame = (options, message) => ({ type: START_GAME, ...options, message });
 
 export const updateScore = (playerNum, newScore) => ({ type: UPDATE_SCORE, playerNum, newScore });
