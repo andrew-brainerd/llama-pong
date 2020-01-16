@@ -20,7 +20,9 @@ export const getGameStatus = ({ currentScore }) => {
     } else {
       gameStatus.isGameOver = false;
     }
-  } else if (player2 >= BASE_WIN_SCORE) {
+  }
+
+  if (player2 >= BASE_WIN_SCORE) {
     if (player1 <= player2 - WIN_MARGIN) {
       gameStatus.isGameOver = true;
       gameStatus.winningPlayerNum = 2;

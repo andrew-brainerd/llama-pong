@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { number, shape, func } from 'prop-types';
+import { number, shape } from 'prop-types';
 import { useSpeechSynthesis } from 'react-speech-kit';
-import { isScoreValid, getGameStatus } from '../../utils/scoring';
+import { getGameStatus } from '../../utils/scoring';
 import GameOver from './GameOver/container';
+import Scoreboard from './Scoreboard/container';
 import styles from './Game.module.scss';
 
+const gameStartMessage = 'Lets get the game started!';
 const HEADER_HEIGHT = 120;
-const gameStartMessage = 'Welcome to LLama Pong. Lets get the game started!';
 
-const Game = ({ height, scoreboard, navTo, updateScore }) => {
+const Game = ({ height, scoreboard }) => {
   const [isNewGame, setIsNewGame] = useState(true);
   const [gameStatus, setGameStatus] = useState({});
   const { speak } = useSpeechSynthesis();
   const scoreBoardHeight = height - HEADER_HEIGHT;
-  const { currentScore: { player1, player2 } } = scoreboard;
 
   useEffect(() => {
-    if (isNewGame) { // && player1 === 0 && player2 === 0
-      // speak({ text: gameStartMessage });
+    if (isNewGame) {
+      speak({ text: gameStartMessage });
       console.log(`%c${gameStartMessage}`, 'color: orange; font-size: 24px');
       setIsNewGame(false);
     }
@@ -30,54 +30,18 @@ const Game = ({ height, scoreboard, navTo, updateScore }) => {
   return gameStatus.isGameOver ?
     <GameOver winningPlayerNum={gameStatus.winningPlayerNum} /> :
     <div className={styles.game}>
-      <div className={styles.scoreboard} style={{ height: scoreBoardHeight }}>
-        <div className={styles.playerScore}>
-          <div
-            className={styles.incrementScore}
-            onClick={() => isScoreValid(player1 + 1) && updateScore(1, player1 + 1)}
-          >
-            <div className={styles.arrow}>&gt;</div>
-          </div>
-          <div className={styles.score}>
-            {player1}
-          </div>
-          <div
-            className={styles.decrementScore}
-            onClick={() => isScoreValid(player1 - 1) && updateScore(1, player1 - 1)}
-          >
-            <div className={styles.arrow}>&gt;</div>
-          </div>
-        </div>
-        <hr style={{ height: scoreBoardHeight - 20 }} />
-        <div className={styles.playerScore}>
-          <div
-            className={styles.incrementScore}
-            onClick={() => isScoreValid(player2 + 1) && updateScore(2, player2 + 1)}
-          >
-            <div className={styles.arrow}>&gt;</div>
-          </div>
-          <div className={styles.score}>
-            {player2}
-          </div>
-          <div
-            className={styles.decrementScore}
-            onClick={() => isScoreValid(player2 - 1) && updateScore(2, player2 - 1)}
-          >
-            <div className={styles.arrow}>&gt;</div>
-          </div>
-        </div>
-      </div>
+      <Scoreboard height={scoreBoardHeight} {...scoreboard} />
     </div>;
 };
 
 Game.propTypes = {
   height: number,
   scoreboard: shape({
-    player1: number,
-    player2: number
-  }),
-  navTo: func.isRequired,
-  updateScore: func.isRequired
+    currentScore: shape({
+      player1: number,
+      player2: number
+    })
+  })
 };
 
 export default Game;

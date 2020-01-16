@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { number, func } from 'prop-types';
+import { number, string, func } from 'prop-types';
 import { GAME_ROUTE } from '../../constants/routes';
 import { NUM_GAMES, PLAYER1, PLAYER2 } from '../../constants/pong';
 import Button from '../common/Button/Button';
@@ -86,6 +86,8 @@ const NewGame = ({ numGames, player1, player2, navTo, updateConfig, startGame })
 
 NewGame.propTypes = {
   numGames: number,
+  player1: string,
+  player2: string,
   navTo: func.isRequired,
   updateConfig: func.isRequired,
   startGame: func.isRequired
