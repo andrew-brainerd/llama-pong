@@ -29,5 +29,5 @@ export const getGameStatus = ({ currentScore }) => {
     }
   }
 
-  return gameStatus
+  return gameStatus;
 };

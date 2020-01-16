@@ -12,7 +12,7 @@ const Game = ({ height, scoreboard, navTo, updateScore }) => {
   const [isNewGame, setIsNewGame] = useState(true);
   const [gameStatus, setGameStatus] = useState({});
   const { speak } = useSpeechSynthesis();
-  const scoreBoardHeight = height - 1.5 * HEADER_HEIGHT;
+  const scoreBoardHeight = height - HEADER_HEIGHT;
   const { currentScore: { player1, player2 } } = scoreboard;
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const Game = ({ height, scoreboard, navTo, updateScore }) => {
   }, [scoreboard]);
 
   return gameStatus.isGameOver ?
-    <GameOver winningPlayerNum={gameStatus.winningPlayerNum} /> : (
+    <GameOver winningPlayerNum={gameStatus.winningPlayerNum} /> :
     <div className={styles.game}>
       <div className={styles.scoreboard} style={{ height: scoreBoardHeight }}>
         <div className={styles.playerScore}>
@@ -67,8 +67,7 @@ const Game = ({ height, scoreboard, navTo, updateScore }) => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
 
 Game.propTypes = {

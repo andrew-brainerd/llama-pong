@@ -20,6 +20,6 @@ const GameOver = ({ winningPlayerNum, playAgain }) => {
 GameOver.propTypes = {
   winningPlayerNum: number.isRequired,
   playAgain: func.isRequired
-}
+};
 
 export default GameOver;

@@ -1,22 +1,26 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { string, func } from 'prop-types';
 import noop from '../../../utils/noop';
 import styles from './TextInput.module.scss';
 
-const TextInput = ({ placeholder, value, inputClassName, onChange, onPressEnter }) => {
+const TextInput = ({ placeholder, value, inputClassName, error, onChange, onPressEnter }) => {
   const [val, setVal] = useState(value || '');
   const [inputError, setInputError] = useState(null);
   const inputRef = useRef();
 
+  useEffect(() => {
+    setInputError(error);
+  }, [error]);
+
   const handleChange = event => {
     const newValue = event.target.value;
     setVal(newValue);
-    onChange ? onChange(newValue) : noop()
+    onChange ? onChange(newValue) : noop();
   };
 
   const handleKeyPress = key => {
     if (key === 'Enter') {
-      onPressEnter ? onPressEnter() : noop()
+      onPressEnter ? onPressEnter() : noop();
     }
   };
 
@@ -48,6 +52,7 @@ TextInput.propTypes = {
   placeholder: string,
   value: string,
   inputClassName: string,
+  error: string,
   onChange: func,
   onPressEnter: func
 };
