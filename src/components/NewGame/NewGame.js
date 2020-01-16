@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { number, func } from 'prop-types';
 import { GAME_ROUTE } from '../../constants/routes';
 import { NUM_GAMES, PLAYER1, PLAYER2 } from '../../constants/pong';
@@ -6,12 +6,20 @@ import Button from '../common/Button/Button';
 import TextInput from '../common/TextInput/TextInput';
 import styles from './NewGame.module.scss';
 
-const NewGame = ({ numGames, navTo, updateConfig, startGame }) => {
+const NewGame = ({ numGames, player1, player2, navTo, updateConfig, startGame }) => {
   const gameId = '00000';
+  const [player1Error, setPlayer1Error] = useState(null);
+  const [player2Error, setPlayer2Error] = useState(null);
+
+  const validate = () => {
+    !player1 ? setPlayer1Error('Please enter a name for Player 1') : setPlayer1Error(null);
+    !player2 ? setPlayer2Error('Please enter a name for Player 2') : setPlayer2Error(null);
+
+    return !!player1 && !!player2;
+  };
 
   return (
     <div className={styles.newGame}>
-      {/* <h1>Start A New Game</h1> */}
       <div className={styles.buttonContainer}>
         <Button
           className={[
@@ -49,11 +57,13 @@ const NewGame = ({ numGames, navTo, updateConfig, startGame }) => {
           placeholder={'Player 1'}
           onChange={value => updateConfig(PLAYER1, value)}
           inputClassName={styles.playerInput}
+          error={player1Error}
         />
         <TextInput
           placeholder={'Player 2'}
           onChange={value => updateConfig(PLAYER2, value)}
           inputClassName={styles.playerInput}
+          error={player2Error}
         />
       </div>
       <Button
@@ -62,8 +72,10 @@ const NewGame = ({ numGames, navTo, updateConfig, startGame }) => {
           styles.startButton
         ].join(' ')}
         onClick={() => {
-          startGame();
-          navTo(GAME_ROUTE.replace(':gameId', gameId));
+          if (validate()) {
+            startGame();
+            navTo(GAME_ROUTE.replace(':gameId', gameId));
+          }
         }}
       >
         Start Game
