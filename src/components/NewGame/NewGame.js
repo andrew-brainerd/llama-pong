@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { number, string, func } from 'prop-types';
+import QrReader from 'react-qr-reader';
 import { GAME_ROUTE } from '../../constants/routes';
 import { NUM_GAMES, PLAYER1, PLAYER2 } from '../../constants/pong';
 import Button from '../common/Button/Button';
@@ -10,12 +11,19 @@ const NewGame = ({ numGames, player1, player2, navTo, updateConfig, startGame })
   const gameId = '00000';
   const [player1Error, setPlayer1Error] = useState(null);
   const [player2Error, setPlayer2Error] = useState(null);
+  const [selectedPlayer, setSelectedPlayer] = useState(null);
 
   const validate = () => {
     !player1 ? setPlayer1Error('Please enter a name for Player 1') : setPlayer1Error(null);
     !player2 ? setPlayer2Error('Please enter a name for Player 2') : setPlayer2Error(null);
 
     return !!player1 && !!player2;
+  };
+
+  const handleQRScan = data => {
+    if (data) {
+      updateConfig(selectedPlayer === 1 ? PLAYER1 : PLAYER2, data);
+    }
   };
 
   return (
@@ -55,16 +63,34 @@ const NewGame = ({ numGames, player1, player2, navTo, updateConfig, startGame })
       <div className={styles.playersContainer}>
         <TextInput
           placeholder={'Player 1'}
+          value={player1}
           onChange={value => updateConfig(PLAYER1, value)}
+          onFocus={() => setSelectedPlayer(1)}
+          onBlur={() => setSelectedPlayer(null)}
           inputClassName={styles.playerInput}
           error={player1Error}
+
         />
         <TextInput
           placeholder={'Player 2'}
+          value={player2}
           onChange={value => updateConfig(PLAYER2, value)}
+          onFocus={() => setSelectedPlayer(2)}
+          onBlur={() => setSelectedPlayer(null)}
           inputClassName={styles.playerInput}
           error={player2Error}
         />
+        {selectedPlayer &&
+          <div className={styles.qrReader}>
+            <QrReader
+              style={{ height: 200, width: 200 }}
+              showViewFinder
+              mirrorVideo
+              delay={300}
+              onScan={handleQRScan}
+              onError={error => console.error('QR Error', error)}
+            />
+          </div>}
       </div>
       <Button
         className={[

@@ -3,7 +3,7 @@ import { string, func } from 'prop-types';
 import noop from '../../../utils/noop';
 import styles from './TextInput.module.scss';
 
-const TextInput = ({ placeholder, value, inputClassName, error, onChange, onPressEnter }) => {
+const TextInput = ({ placeholder, value, inputClassName, error, onChange, onPressEnter, onFocus, onBlur }) => {
   const [val, setVal] = useState(value || '');
   const [inputError, setInputError] = useState(null);
   const inputRef = useRef();
@@ -11,6 +11,10 @@ const TextInput = ({ placeholder, value, inputClassName, error, onChange, onPres
   useEffect(() => {
     setInputError(error);
   }, [error]);
+
+  useEffect(() => {
+    value && setVal(value);
+  }, [value]);
 
   const handleChange = event => {
     const newValue = event.target.value;
@@ -38,6 +42,8 @@ const TextInput = ({ placeholder, value, inputClassName, error, onChange, onPres
         autoComplete={'false'}
         onChange={handleChange}
         onKeyPress={handleKeyPress}
+        onFocus={onFocus || noop}
+        onBlur={onBlur || noop}
       />
       {inputError && (
         <div className={styles.inputError}>
@@ -54,7 +60,9 @@ TextInput.propTypes = {
   inputClassName: string,
   error: string,
   onChange: func,
-  onPressEnter: func
+  onPressEnter: func,
+  onFocus: func,
+  onBlur: func
 };
 
 export default TextInput;
