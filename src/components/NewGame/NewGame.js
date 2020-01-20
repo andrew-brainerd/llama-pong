@@ -3,7 +3,7 @@ import { number, shape, string, func } from 'prop-types';
 import { GAME_ROUTE } from '../../constants/routes';
 import { NUM_GAMES, PLAYER1, PLAYER2 } from '../../constants/pong';
 import Button from '../common/Button/Button';
-import UserModal from '../Users/UserModal/container';
+import PlayerModal from '../Players/PlayerModal/container';
 import styles from './NewGame.module.scss';
 
 const NewGame = ({ numGames, player1, player2, setPlayer, navTo, updateConfig, startGame }) => {
@@ -89,7 +89,7 @@ const NewGame = ({ numGames, player1, player2, setPlayer, navTo, updateConfig, s
       </Button>
       </div>
       {isModalOpen &&
-        <UserModal
+        <PlayerModal
           playerNum={selectedPlayer}
           closeModal={() => setIsModalOpen(false)}
         />}

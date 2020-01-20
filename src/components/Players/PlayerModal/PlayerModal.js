@@ -3,42 +3,42 @@ import { isMobile, browserName } from 'react-device-detect';
 import QrReader from 'react-qr-reader';
 import Button from '../../common/Button/Button';
 import Modal from '../../common/Modal/Modal';
-import NewUser from '../NewUser/container';
-import styles from './UserModal.module.scss';
+import NewPlayer from '../NewPlayer/container';
+import styles from './PlayerModal.module.scss';
 
-const UserModal = ({ playerNum, closeModal, setPlayer }) => {
-  const [isNewUser, setIsNewUser] = useState(null);
-  const [isExistingUser, setIsExistingUser] = useState(null);
+const PlayerModal = ({ playerNum, closeModal, setPlayer }) => {
+  const [isNewPlayer, setIsNewPlayer] = useState(null);
+  const [isExistingPlayer, setIsExistingPlayer] = useState(null);
   const [scannedPlayer, setScannedPlayer] = useState('');
 
   return (
     <Modal
-      className={styles.newUserModal}
+      className={styles.newPlayerModal}
       isOpen
       closeModal={() => {
-        setIsNewUser(null);
-        setIsExistingUser(null);
+        setIsNewPlayer(null);
+        setIsExistingPlayer(null);
         setScannedPlayer('');
         closeModal();
       }}
     >
-      <div className={styles.userModal}>
-        {!isNewUser && !isExistingUser &&
-          <div className={styles.userModalButtons}>
+      <div className={styles.playerModal}>
+        {!isNewPlayer && !isExistingPlayer &&
+          <div className={styles.playerModalButtons}>
             <Button
-              className={styles.userModalButton}
+              className={styles.playerModalButton}
               text={'New Player'}
-              onClick={() => setIsNewUser(true)}
+              onClick={() => setIsNewPlayer(true)}
             />
             <Button
-              className={styles.userModalButton}
+              className={styles.playerModalButton}
               text={'Load Profile'}
-              onClick={() => setIsExistingUser(true)}
+              onClick={() => setIsExistingPlayer(true)}
             />
             {/* <div className={styles.browserName}>Browser: {browserName}</div> */}
           </div>}
-        {isNewUser && <NewUser />}
-        {isExistingUser &&
+        {isNewPlayer && <NewPlayer />}
+        {isExistingPlayer &&
           <div className={styles.existingPlayer}>
             {!scannedPlayer ?
               <div className={styles.qrReader}>
@@ -63,8 +63,8 @@ const UserModal = ({ playerNum, closeModal, setPlayer }) => {
                     text={'Ready'}
                     onClick={() => {
                       setPlayer(playerNum, scannedPlayer);
-                      setIsNewUser(null);
-                      setIsExistingUser(null);
+                      setIsNewPlayer(null);
+                      setIsExistingPlayer(null);
                       closeModal();
                     }}
                   />
@@ -72,7 +72,7 @@ const UserModal = ({ playerNum, closeModal, setPlayer }) => {
                     text={'Rescan'}
                     onClick={() => {
                       setScannedPlayer('');
-                      setIsExistingUser(true);
+                      setIsExistingPlayer(true);
                     }}
                   />
                 </div>
@@ -85,8 +85,8 @@ const UserModal = ({ playerNum, closeModal, setPlayer }) => {
   );
 };
 
-UserModal.propTypes = {
+PlayerModal.propTypes = {
 
 };
 
-export default UserModal;
+export default PlayerModal;

@@ -6,9 +6,9 @@ const basicJsonHeader = { 'Content-Type': 'application/json' };
 
 const QR_CODE_API_URL = 'https://api.qrserver.com/v1/create-qr-code/';
 
-export const createCode = async userId => {
+export const createCode = async playerId => {
   const options = {
-    data: userId,
+    data: playerId,
     size: '200x200'
   };
 

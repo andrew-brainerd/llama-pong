@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { func } from 'prop-types';
 import TextInput from '../../common/TextInput/TextInput';
 import Button from '../../common/Button/Button';
-import styles from './NewUser.module.scss';
+import styles from './NewPlayer.module.scss';
 
-const NewUser = ({ createPlayer }) => {
+const NewPlayer = ({ createPlayer }) => {
   const [playerName, setPlayerName] = useState('');
 
   return (
-    <div className={styles.newUser}>
+    <div className={styles.newPLayer}>
       <TextInput
-        placeholder={'Enter a user name'}
+        placeholder={'Enter player name'}
         onChange={setPlayerName}
         onPressEnter={() => createPlayer(playerName)}
       />
@@ -23,8 +23,8 @@ const NewUser = ({ createPlayer }) => {
   );
 };
 
-NewUser.propTypes = {
+NewPlayer.propTypes = {
   createPlayer: func.isRequired
 };
 
-export default NewUser;
+export default NewPlayer;

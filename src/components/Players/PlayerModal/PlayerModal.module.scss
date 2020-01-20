@@ -1,13 +1,13 @@
 @import '../../../styles/colors.scss';
 
-.userModal {
+.playerModal {
   margin: 20px;
 
-  .userModalButtons {
+  .playerModalButtons {
     display: flex;
     flex-direction: row;
 
-    .userModalButton {
+    .playerModalButton {
       font-size: 1.5em;
       width: 40%;
     }
