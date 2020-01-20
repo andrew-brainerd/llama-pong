@@ -2,6 +2,7 @@
 
 .textInputContainer {
   position: relative;
+  text-align: center;
 
   .textInput {
     @include defaultInput();

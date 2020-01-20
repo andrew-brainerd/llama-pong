@@ -56,11 +56,24 @@
 @media screen and (max-width: $mobileWidth) {
   .home {
     h1 {
+      font-size: 20vw;
       margin: 20px auto;
     }
 
+    .logo {
+      img {
+        max-width: 250px;
+      }
+    }
+
     .buttonContainer {
+      flex-direction: column;
       margin: 20px auto;
+
+      .button {
+        margin: 10px auto;
+        padding: 20px 0;
+      }
     }
   }
 }

@@ -8,15 +8,6 @@
   flex-direction: column;
   margin: 5px;
 
-  h1 {
-    color: $paddle-red;
-    font-family: $mainFontStyle;
-    font-size: 3em;
-    margin: 20px auto;
-    text-align: left;
-    width: 90%;
-  }
-
   .buttonContainer {
     display: flex;
     flex-direction: row;
@@ -77,6 +68,35 @@
 
       &:hover {
         background: $success-green;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $mediumScreenWidth) {
+  .newGame {
+    .buttonContainer {
+      justify-content: center;
+      min-width: 0;
+
+      .gameTypeButton {
+        font-size: 1em;
+        height: 150px;
+        margin: 5px;
+        width: 200px;
+      }
+    }
+
+    .playersContainer {
+      flex-direction: column;
+      margin: 10px auto;
+
+      > div {
+        margin: 10px auto;
+      }
+  
+      .playerInput {
+        font-size: 1.5em;
       }
     }
   }
