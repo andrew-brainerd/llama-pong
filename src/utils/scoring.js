@@ -1,4 +1,4 @@
-const BASE_WIN_SCORE = 3;
+const BASE_WIN_SCORE = 21;
 const WIN_MARGIN = 2;
 
 export const isScoreValid = score => {

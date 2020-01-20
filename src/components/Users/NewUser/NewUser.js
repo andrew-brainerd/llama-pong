@@ -16,6 +16,7 @@ const NewUser = ({ createPlayer }) => {
       />
       <Button
         className={styles.createPlayerButton}
+        text={'Create Player'}
         onClick={() => createPlayer(playerName)}
       />
     </div>

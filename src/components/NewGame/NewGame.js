@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
 import { number, shape, string, func } from 'prop-types';
-import QrReader from 'react-qr-reader';
 import { GAME_ROUTE } from '../../constants/routes';
 import { NUM_GAMES, PLAYER1, PLAYER2 } from '../../constants/pong';
 import Button from '../common/Button/Button';
-import TextInput from '../common/TextInput/TextInput';
-import Modal from '../common/Modal/Modal';
-import NewUser from '../Users/NewUser/container';
+import UserModal from '../Users/UserModal/container';
 import styles from './NewGame.module.scss';
 
 const NewGame = ({ numGames, player1, player2, setPlayer, navTo, updateConfig, startGame }) => {
   const gameId = '00000';
   const [player1Error, setPlayer1Error] = useState(null);
   const [player2Error, setPlayer2Error] = useState(null);
-  const [selectedPlayer, setSelectedPlayer] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPlayer, setSelectedPlayer] = useState(1);
+  const [isModalOpen, setIsModalOpen] = useState(true);
 
   const validate = () => {
     !player1 ? setPlayer1Error('Please enter a name for Player 1') : setPlayer1Error(null);
@@ -59,35 +56,22 @@ const NewGame = ({ numGames, player1, player2, setPlayer, navTo, updateConfig, s
         </Button>
         </div>
         <div className={styles.playersContainer}>
-          <TextInput
-            placeholder={'Player 1'}
-            value={(player1 || {}).name}
-            onChange={value => updateConfig(PLAYER1, value)}
-            onFocus={() => setSelectedPlayer(1)}
-            onBlur={() => setSelectedPlayer(null)}
-            inputClassName={styles.playerInput}
-            error={player1Error}
+          <Button
+            className={styles.playerName}
+            text={player1 ? player1.name : 'Player 1'}
+            onClick={() => {
+              setSelectedPlayer(1);
+              setIsModalOpen(true);
+            }}
           />
-          <TextInput
-            placeholder={'Player 2'}
-            value={(player2 || {}).name}
-            onChange={value => updateConfig(PLAYER2, value)}
-            onFocus={() => setSelectedPlayer(2)}
-            onBlur={() => setSelectedPlayer(null)}
-            inputClassName={styles.playerInput}
-            error={player2Error}
+          <Button
+            className={styles.playerName}
+            text={player2 ? player2.name : 'Player 2'}
+            onClick={() => {
+              setSelectedPlayer(2);
+              setIsModalOpen(true);
+            }}
           />
-          {selectedPlayer &&
-            <div className={styles.qrReader}>
-              <QrReader
-                style={{ height: 200, width: 200 }}
-                showViewFinder
-                mirrorVideo
-                delay={300}
-                onScan={data => data && setPlayer(selectedPlayer, data)}
-                onError={error => console.error('QR Error', error)}
-              />
-            </div>}
         </div>
         <Button
           className={[
@@ -104,13 +88,11 @@ const NewGame = ({ numGames, player1, player2, setPlayer, navTo, updateConfig, s
           Start Game
       </Button>
       </div>
-      <Modal
-        className={styles.newUserModal}
-        isOpen={isModalOpen}
-        closeModal={() => setIsModalOpen(false)}
-      >
-        <NewUser />
-      </Modal>
+      {isModalOpen &&
+        <UserModal
+          playerNum={selectedPlayer}
+          closeModal={() => setIsModalOpen(false)}
+        />}
     </>
   );
 };

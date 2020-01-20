@@ -1,0 +1,32 @@
+@import '../../../styles/colors.scss';
+
+.userModal {
+  margin: 20px;
+
+  .userModalButtons {
+    display: flex;
+    flex-direction: row;
+
+    .userModalButton {
+      font-size: 1.5em;
+      width: 40%;
+    }
+  }
+
+  .existingPlayer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .qrReader {
+      display: flex;
+      flex: 1;
+      margin-bottom: 10px;
+
+      .playerNameDisplay {
+
+      }
+    }
+  }
+}

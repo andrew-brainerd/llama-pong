@@ -2,7 +2,6 @@
 @import '../../../styles/mixins.scss';
 
 .modal {
-  background: $modalBackground;
   border-radius: 5px;
   height: 350px;
   margin: 60px auto;
@@ -13,7 +12,7 @@
 
   .header {
     align-items: center;
-    background: $buttonBackground;
+    background: $modalBackground;
     color: $primaryTextColor;
     display: flex;
     height: 30px;
@@ -40,6 +39,7 @@
       width: 30px;
 
       &:hover {
+        background: $modalBackground;
         box-shadow: none;
         opacity: 1;
         transform: none;
@@ -48,8 +48,9 @@
   }
 
   .content {
-    height: 90%;
-    margin: 20px;
+    background: $primaryColor;
+    border: 5px solid $modalBackground;
+    padding: 10px;
   }
 }
 
