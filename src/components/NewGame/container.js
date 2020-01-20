@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { NUM_GAMES, PLAYER1, PLAYER2 } from '../../constants/pong';
 import { getConfiguration } from '../../selectors/pong';
 import { navTo } from '../../actions/routing';
-import { updateConfig, startGame } from '../../actions/pong';
+import { setPlayer, updateConfig, startGame } from '../../actions/pong';
 import NewGame from './NewGame';
 
 const mapStateToProps = state => ({
@@ -13,6 +13,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   navTo: (path, title) => dispatch(navTo(path, title)),
+  setPlayer: (playerNum, playerId) => dispatch(setPlayer(playerNum, playerId)),
   updateConfig: (key, value) => dispatch(updateConfig(key, value)),
   startGame: options => dispatch(startGame(options))
 });

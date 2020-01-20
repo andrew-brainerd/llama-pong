@@ -27,3 +27,9 @@ It bundles React in production mode and optimizes the build for the best perform
 Provides custom hooks to utilize the Web Speech API
 
 https://github.com/MikeyParton/react-speech-kit
+
+### react-qr-reader
+
+Provides a component to read QR codes from a camera in the browser
+
+https://github.com/JodusNodus/react-qr-reader
