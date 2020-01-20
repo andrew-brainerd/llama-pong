@@ -19,3 +19,17 @@ Launches the test runner in the interactive watch mode
 
 Builds the app for production to the `build` folder\
 It bundles React in production mode and optimizes the build for the best performance
+
+## Resources
+
+### react-speech-kit
+
+Provides custom hooks to utilize the Web Speech API
+
+https://github.com/MikeyParton/react-speech-kit
+
+### react-qr-reader
+
+Provides a component to read QR codes from a camera in the browser
+
+https://github.com/JodusNodus/react-qr-reader

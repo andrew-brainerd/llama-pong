@@ -4,11 +4,16 @@
 .button {
   @include boxShadow();
 
+  align-items: center;
   background: $buttonBackground;
+  border-radius: 7px;
   color: $primaryTextColor;
   cursor: pointer;
+  display: flex;
   font-size: 0.9em;
-  padding: 5px 10px;
+  justify-content: center;
+  margin: 20px auto;
+  padding: 20px 0;
   text-align: center;
   transition: 0.3s all;
   user-select: none;

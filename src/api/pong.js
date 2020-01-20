@@ -1,4 +1,4 @@
-import { handleResponse, parseOptions } from './tools';
+import { handleResponse } from './tools';
 
 const basicJsonHeader = { 'Content-Type': 'application/json' };
 
@@ -15,4 +15,13 @@ export const createGame = async name => {
   const json = await response.json();
 
   return json;
+};
+
+export const getPlayer = async playerId => {
+  const mockPlayer = {
+    _id: '0',
+    name: 'A. Brainerd'
+  };
+
+  return mockPlayer;
 };

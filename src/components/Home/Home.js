@@ -14,13 +14,13 @@ const Home = ({ navTo }) => (
     <div className={styles.buttonContainer}>
       <Button
         className={styles.button}
-        onClick={() => navTo(NEW_GAME_ROUTE)}
+        onClick={() => navTo(NEW_GAME_ROUTE, 'New Game')}
       >
         New Game
       </Button>
       <Button
         className={styles.button}
-        onClick={() => navTo(LOAD_GAME_ROUTE)}
+        onClick={() => navTo(LOAD_GAME_ROUTE, 'Load Existing Game')}
       >
         Load Game
       </Button>

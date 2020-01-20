@@ -1,19 +1,18 @@
-$paddle-red: #DB4B40;
-$paddle-gray: #57524E;
-$paddle-ball: #FFF2D9;
+$paddle-red: #db4b40;
+$paddle-gray: #57524e;
+$paddle-ball: #fff2d9;
 
 $primaryColor: #191919;
-$secondaryColor: rgb(113, 110, 116);
+// $secondaryColor: rgb(113, 110, 116);
 $secondaryColor: rgba(77, 39, 122, 0.5);
 $tertiaryColor: #6785a3;
-
-$buttonBackground: rgba(15, 15, 15, 1);
-$buttonBackgroundHover: rgba(15, 15, 15, 0.6);
 
 $modalBackground: #454545;
 $modalBorder: #e7e7e7;
 
-$secondaryColorLight: #432269;
+$secondaryColorLight: rgba(67, 34, 105, 1);
+$secondaryColorLight-8: rgba(67, 34, 105, 0.8);
+
 $primaryTextColor: whitesmoke;
 
 $accentColor: rgba(139, 196, 72, 0.7);
@@ -22,10 +21,16 @@ $mutedColor: #c4bf48;
 $mainBackground: $primaryColor;
 $mainColor: #f2ecf9;
 
+$buttonBackground: $secondaryColor;
+$buttonBackgroundHover: $secondaryColorLight;
+
 $errorText: rgba(196, 110, 72, 1);
 $errorText-5: rgba(196, 110, 72, 0.5);
 
-$successText: green;
+$success-green: rgba(40, 143, 48, 1);
+$success-green-9: rgba(40, 143, 48, 0.9);
+$success-green-7: rgba(40, 143, 48, 0.7);
+$success-green-5: rgba(40, 143, 48, 0.5);
 
 $gray-0: #ffffff;
 $gray-2-5: #f9f9f9;

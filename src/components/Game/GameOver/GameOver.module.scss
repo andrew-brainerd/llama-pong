@@ -1,0 +1,22 @@
+.gameOver {
+  font-size: 2em;
+  margin: 50px auto;
+  text-align: center;
+  user-select: none;
+
+  .message {
+    font-family: 'Roboto Mono';
+    font-size: 3em;
+    margin: 30px auto;
+  }
+
+  .winner {
+    font-family: 'Roboto Mono';
+    margin-bottom: 75px;
+  }
+
+  .playAgainButton {
+    margin: 30px auto;
+    width: 250px;
+  }
+}
