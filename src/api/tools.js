@@ -8,7 +8,7 @@ export const handleResponse = async (response, expected) => {
   }
 };
 
-export const parseOptions = options => {
+export const formatQueryString = options => {
   return (options && !isEmpty(options) &&
     `?${keys(options).map(option =>
       `${option}=${options[option]}`

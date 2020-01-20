@@ -5,6 +5,8 @@ import { GAME_ROUTE } from '../../constants/routes';
 import { NUM_GAMES, PLAYER1, PLAYER2 } from '../../constants/pong';
 import Button from '../common/Button/Button';
 import TextInput from '../common/TextInput/TextInput';
+import Modal from '../common/Modal/Modal';
+import NewUser from '../Users/NewUser/container';
 import styles from './NewGame.module.scss';
 
 const NewGame = ({ numGames, player1, player2, setPlayer, navTo, updateConfig, startGame }) => {
@@ -12,6 +14,7 @@ const NewGame = ({ numGames, player1, player2, setPlayer, navTo, updateConfig, s
   const [player1Error, setPlayer1Error] = useState(null);
   const [player2Error, setPlayer2Error] = useState(null);
   const [selectedPlayer, setSelectedPlayer] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const validate = () => {
     !player1 ? setPlayer1Error('Please enter a name for Player 1') : setPlayer1Error(null);
@@ -21,86 +24,94 @@ const NewGame = ({ numGames, player1, player2, setPlayer, navTo, updateConfig, s
   };
 
   return (
-    <div className={styles.newGame}>
-      <div className={styles.buttonContainer}>
+    <>
+      <div className={styles.newGame}>
+        <div className={styles.buttonContainer}>
+          <Button
+            className={[
+              styles.button,
+              styles.gameTypeButton,
+              numGames === 1 ? styles.selected : ''
+            ].join(' ')}
+            onClick={() => updateConfig(NUM_GAMES, 1)}
+          >
+            1 Game
+        </Button>
+          <Button
+            className={[
+              styles.button,
+              styles.gameTypeButton,
+              numGames === 3 ? styles.selected : ''
+            ].join(' ')}
+            onClick={() => updateConfig(NUM_GAMES, 3)}
+          >
+            Best of 3
+        </Button>
+          <Button
+            className={[
+              styles.button,
+              styles.gameTypeButton,
+              numGames === 5 ? styles.selected : ''
+            ].join(' ')}
+            onClick={() => updateConfig(NUM_GAMES, 5)}
+          >
+            Best of 5
+        </Button>
+        </div>
+        <div className={styles.playersContainer}>
+          <TextInput
+            placeholder={'Player 1'}
+            value={(player1 || {}).name}
+            onChange={value => updateConfig(PLAYER1, value)}
+            onFocus={() => setSelectedPlayer(1)}
+            onBlur={() => setSelectedPlayer(null)}
+            inputClassName={styles.playerInput}
+            error={player1Error}
+          />
+          <TextInput
+            placeholder={'Player 2'}
+            value={(player2 || {}).name}
+            onChange={value => updateConfig(PLAYER2, value)}
+            onFocus={() => setSelectedPlayer(2)}
+            onBlur={() => setSelectedPlayer(null)}
+            inputClassName={styles.playerInput}
+            error={player2Error}
+          />
+          {selectedPlayer &&
+            <div className={styles.qrReader}>
+              <QrReader
+                style={{ height: 200, width: 200 }}
+                showViewFinder
+                mirrorVideo
+                delay={300}
+                onScan={data => data && setPlayer(selectedPlayer, data)}
+                onError={error => console.error('QR Error', error)}
+              />
+            </div>}
+        </div>
         <Button
           className={[
             styles.button,
-            styles.gameTypeButton,
-            numGames === 1 ? styles.selected : ''
+            styles.startButton
           ].join(' ')}
-          onClick={() => updateConfig(NUM_GAMES, 1)}
+          onClick={() => {
+            if (validate()) {
+              startGame();
+              navTo(GAME_ROUTE.replace(':gameId', gameId));
+            }
+          }}
         >
-          1 Game
-        </Button>
-        <Button
-          className={[
-            styles.button,
-            styles.gameTypeButton,
-            numGames === 3 ? styles.selected : ''
-          ].join(' ')}
-          onClick={() => updateConfig(NUM_GAMES, 3)}
-        >
-          Best of 3
-        </Button>
-        <Button
-          className={[
-            styles.button,
-            styles.gameTypeButton,
-            numGames === 5 ? styles.selected : ''
-          ].join(' ')}
-          onClick={() => updateConfig(NUM_GAMES, 5)}
-        >
-          Best of 5
-        </Button>
-      </div>
-      <div className={styles.playersContainer}>
-        <TextInput
-          placeholder={'Player 1'}
-          value={(player1 || {}).name}
-          onChange={value => updateConfig(PLAYER1, value)}
-          onFocus={() => setSelectedPlayer(1)}
-          onBlur={() => setSelectedPlayer(null)}
-          inputClassName={styles.playerInput}
-          error={player1Error}
-
-        />
-        <TextInput
-          placeholder={'Player 2'}
-          value={(player2 || {}).name}
-          onChange={value => updateConfig(PLAYER2, value)}
-          onFocus={() => setSelectedPlayer(2)}
-          onBlur={() => setSelectedPlayer(null)}
-          inputClassName={styles.playerInput}
-          error={player2Error}
-        />
-        {selectedPlayer &&
-          <div className={styles.qrReader}>
-            <QrReader
-              style={{ height: 200, width: 200 }}
-              showViewFinder
-              mirrorVideo
-              delay={300}
-              onScan={data => data && setPlayer(selectedPlayer, data)}
-              onError={error => console.error('QR Error', error)}
-            />
-          </div>}
-      </div>
-      <Button
-        className={[
-          styles.button,
-          styles.startButton
-        ].join(' ')}
-        onClick={() => {
-          if (validate()) {
-            startGame();
-            navTo(GAME_ROUTE.replace(':gameId', gameId));
-          }
-        }}
-      >
-        Start Game
+          Start Game
       </Button>
-    </div>
+      </div>
+      <Modal
+        className={styles.newUserModal}
+        isOpen={isModalOpen}
+        closeModal={() => setIsModalOpen(false)}
+      >
+        <NewUser />
+      </Modal>
+    </>
   );
 };
 
