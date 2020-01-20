@@ -2,8 +2,6 @@
 @import '../../../styles/mixins.scss';
 
 .button {
-  @include boxShadow();
-
   align-items: center;
   background: $buttonBackground;
   border-radius: 7px;
@@ -19,7 +17,7 @@
   user-select: none;
   width: 150px;
 
-  &:hover:not(.disabled) {
+  &:hover {
     background: $buttonBackgroundHover;
     transform: scale(1.1);
   }
@@ -27,5 +25,6 @@
 
 .disabled {
   cursor: default;
+  pointer-events: none;
   opacity: 0.8;
 }

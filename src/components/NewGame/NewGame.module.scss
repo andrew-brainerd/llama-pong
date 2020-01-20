@@ -42,8 +42,9 @@
 
     .playerName {
       font-size: 2em;
-      margin: 50px auto;
-      width: 250px;
+      margin: 50px auto 30px;
+      padding: 20px;
+      width: 280px;
     }
   }
 
@@ -64,7 +65,7 @@
       background: $success-green-9;
       margin-top: 100px;
 
-      &:hover {
+      &:hover:not(.disabled) {
         background: $success-green;
       }
     }
@@ -92,7 +93,7 @@
       > div {
         margin: 10px auto;
       }
-  
+
       .playerInput {
         font-size: 1.5em;
       }

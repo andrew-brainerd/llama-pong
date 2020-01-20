@@ -37,6 +37,6 @@ export const createPlayer = (playerName, playerNum) => async dispatch => {
 export const setPlayer = (playerNum, playerId) => async dispatch => {
   dispatch(loadingPlayer);
   pong.getPlayer(playerId).then(player => {
-    dispatch(updateConfig(playerNum === 1 ? PLAYER1 : PLAYER2, player))
+    dispatch(updateConfig(playerNum === 1 ? PLAYER1 : PLAYER2, player));
   });
 };

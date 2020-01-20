@@ -1,8 +1,4 @@
-//?data=HelloWorld&amp;size=100x100
-
 import { handleResponse, formatQueryString } from './tools';
-
-const basicJsonHeader = { 'Content-Type': 'application/json' };
 
 const QR_CODE_API_URL = 'https://api.qrserver.com/v1/create-qr-code/';
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { number, func } from 'prop-types';
 import { isMobile, browserName } from 'react-device-detect';
 import QrReader from 'react-qr-reader';
 import Button from '../../common/Button/Button';
@@ -35,7 +36,7 @@ const PlayerModal = ({ playerNum, closeModal, setPlayer }) => {
               text={'Load Profile'}
               onClick={() => setIsExistingPlayer(true)}
             />
-            {/* <div className={styles.browserName}>Browser: {browserName}</div> */}
+            {isMobile && <div className={styles.browserName}>Browser: {browserName}</div>}
           </div>}
         {isNewPlayer && <NewPlayer />}
         {isExistingPlayer &&
@@ -86,7 +87,9 @@ const PlayerModal = ({ playerNum, closeModal, setPlayer }) => {
 };
 
 PlayerModal.propTypes = {
-
+  playerNum: number,
+  closeModal: func.isRequired,
+  setPlayer: func.isRequired
 };
 
 export default PlayerModal;

@@ -1,24 +1,15 @@
 import React, { useState } from 'react';
 import { number, shape, string, func } from 'prop-types';
 import { GAME_ROUTE } from '../../constants/routes';
-import { NUM_GAMES, PLAYER1, PLAYER2 } from '../../constants/pong';
+import { NUM_GAMES } from '../../constants/pong';
 import Button from '../common/Button/Button';
 import PlayerModal from '../Players/PlayerModal/container';
 import styles from './NewGame.module.scss';
 
-const NewGame = ({ numGames, player1, player2, setPlayer, navTo, updateConfig, startGame }) => {
+const NewGame = ({ numGames, player1, player2, navTo, updateConfig, startGame }) => {
   const gameId = '00000';
-  const [player1Error, setPlayer1Error] = useState(null);
-  const [player2Error, setPlayer2Error] = useState(null);
-  const [selectedPlayer, setSelectedPlayer] = useState(1);
-  const [isModalOpen, setIsModalOpen] = useState(true);
-
-  const validate = () => {
-    !player1 ? setPlayer1Error('Please enter a name for Player 1') : setPlayer1Error(null);
-    !player2 ? setPlayer2Error('Please enter a name for Player 2') : setPlayer2Error(null);
-
-    return !!player1 && !!player2;
-  };
+  const [selectedPlayer, setSelectedPlayer] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
@@ -33,7 +24,7 @@ const NewGame = ({ numGames, player1, player2, setPlayer, navTo, updateConfig, s
             onClick={() => updateConfig(NUM_GAMES, 1)}
           >
             1 Game
-        </Button>
+          </Button>
           <Button
             className={[
               styles.button,
@@ -43,7 +34,7 @@ const NewGame = ({ numGames, player1, player2, setPlayer, navTo, updateConfig, s
             onClick={() => updateConfig(NUM_GAMES, 3)}
           >
             Best of 3
-        </Button>
+          </Button>
           <Button
             className={[
               styles.button,
@@ -53,12 +44,12 @@ const NewGame = ({ numGames, player1, player2, setPlayer, navTo, updateConfig, s
             onClick={() => updateConfig(NUM_GAMES, 5)}
           >
             Best of 5
-        </Button>
+          </Button>
         </div>
         <div className={styles.playersContainer}>
           <Button
             className={styles.playerName}
-            text={player1 ? player1.name : 'Player 1'}
+            text={player1 ? player1.name : 'Select Player 1'}
             onClick={() => {
               setSelectedPlayer(1);
               setIsModalOpen(true);
@@ -66,7 +57,7 @@ const NewGame = ({ numGames, player1, player2, setPlayer, navTo, updateConfig, s
           />
           <Button
             className={styles.playerName}
-            text={player2 ? player2.name : 'Player 2'}
+            text={player2 ? player2.name : 'Select Player 2'}
             onClick={() => {
               setSelectedPlayer(2);
               setIsModalOpen(true);
@@ -79,14 +70,13 @@ const NewGame = ({ numGames, player1, player2, setPlayer, navTo, updateConfig, s
             styles.startButton
           ].join(' ')}
           onClick={() => {
-            if (validate()) {
-              startGame();
-              navTo(GAME_ROUTE.replace(':gameId', gameId));
-            }
+            startGame();
+            navTo(GAME_ROUTE.replace(':gameId', gameId));
           }}
+          disabled={!player1 || !player2}
         >
           Start Game
-      </Button>
+        </Button>
       </div>
       {isModalOpen &&
         <PlayerModal
