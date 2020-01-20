@@ -5,11 +5,12 @@
 
   .playerModalButtons {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 
     .playerModalButton {
       font-size: 1.5em;
-      width: 40%;
+      margin: 10px auto;
+      width: 250px;
     }
   }
 

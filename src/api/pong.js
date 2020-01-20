@@ -19,7 +19,7 @@ export const createGame = async name => {
 
 export const createPlayer = async playerName => {
   const mockPlayer = {
-    _id: '0',
+    playerId: '0',
     name: playerName
   };
 
@@ -28,7 +28,7 @@ export const createPlayer = async playerName => {
 
 export const getPlayer = async playerId => {
   const mockPlayer = {
-    _id: '0',
+    playerId: '0',
     name: 'A. Brainerd'
   };
 

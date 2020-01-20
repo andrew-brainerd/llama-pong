@@ -5,11 +5,13 @@ import QrReader from 'react-qr-reader';
 import Button from '../../common/Button/Button';
 import Modal from '../../common/Modal/Modal';
 import NewPlayer from '../NewPlayer/container';
+import TempPlayer from '../TempPlayer/container';
 import styles from './PlayerModal.module.scss';
 
 const PlayerModal = ({ playerNum, closeModal, setPlayer }) => {
   const [isNewPlayer, setIsNewPlayer] = useState(null);
   const [isExistingPlayer, setIsExistingPlayer] = useState(null);
+  const [isTempPlayer, setIsTempPlayer] = useState(null);
   const [scannedPlayer, setScannedPlayer] = useState('');
 
   return (
@@ -24,7 +26,7 @@ const PlayerModal = ({ playerNum, closeModal, setPlayer }) => {
       }}
     >
       <div className={styles.playerModal}>
-        {!isNewPlayer && !isExistingPlayer &&
+        {!isNewPlayer && !isExistingPlayer && !isTempPlayer &&
           <div className={styles.playerModalButtons}>
             <Button
               className={styles.playerModalButton}
@@ -36,9 +38,14 @@ const PlayerModal = ({ playerNum, closeModal, setPlayer }) => {
               text={'Load Profile'}
               onClick={() => setIsExistingPlayer(true)}
             />
+            <Button
+              className={styles.playerModalButton}
+              text={'Temp Profile'}
+              onClick={() => setIsTempPlayer(true)}
+            />
             {isMobile && <div className={styles.browserName}>Browser: {browserName}</div>}
           </div>}
-        {isNewPlayer && <NewPlayer />}
+        {isNewPlayer && <NewPlayer playerNum={playerNum} closeModal={closeModal} />}
         {isExistingPlayer &&
           <div className={styles.existingPlayer}>
             {!scannedPlayer ?
@@ -81,6 +88,7 @@ const PlayerModal = ({ playerNum, closeModal, setPlayer }) => {
               )}
           </div>
         }
+        {isTempPlayer && <TempPlayer playerNum={playerNum} closeModal={closeModal} />}
       </div>
     </Modal>
   );

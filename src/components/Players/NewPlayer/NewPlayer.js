@@ -4,7 +4,7 @@ import TextInput from '../../common/TextInput/TextInput';
 import Button from '../../common/Button/Button';
 import styles from './NewPlayer.module.scss';
 
-const NewPlayer = ({ createPlayer }) => {
+const NewPlayer = ({ playerNum, createPlayer }) => {
   const [playerName, setPlayerName] = useState('');
 
   return (
@@ -12,12 +12,12 @@ const NewPlayer = ({ createPlayer }) => {
       <TextInput
         placeholder={'Enter player name'}
         onChange={setPlayerName}
-        onPressEnter={() => createPlayer(playerName)}
+        onPressEnter={() => createPlayer(playerName, playerNum)}
       />
       <Button
         className={styles.createPlayerButton}
         text={'Create Player'}
-        onClick={() => createPlayer(playerName)}
+        onClick={() => createPlayer(playerName, playerNum)}
       />
     </div>
   );

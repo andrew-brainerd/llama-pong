@@ -22,7 +22,7 @@ const TextInput = ({ placeholder, value, inputClassName, error, onChange, onPres
     onChange ? onChange(newValue) : noop();
   };
 
-  const handleKeyPress = key => {
+  const handleKeyPress = ({ key }) => {
     if (key === 'Enter') {
       onPressEnter ? onPressEnter() : noop();
     }
