@@ -32,6 +32,7 @@ const NewGame = ({ numGames, player1, player2, isCreatingGame, updateConfig, cre
               numGames === 3 ? styles.selected : ''
             ].join(' ')}
             onClick={() => updateConfig(NUM_GAMES, 3)}
+            disabled
           >
             Best of 3
           </Button>
@@ -42,6 +43,7 @@ const NewGame = ({ numGames, player1, player2, isCreatingGame, updateConfig, cre
               numGames === 5 ? styles.selected : ''
             ].join(' ')}
             onClick={() => updateConfig(NUM_GAMES, 5)}
+            disabled
           >
             Best of 5
           </Button>
