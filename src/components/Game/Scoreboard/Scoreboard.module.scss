@@ -9,6 +9,12 @@
   height: 100%;
   position: relative;
 
+  .playerName {
+    font-size: 2em;
+    position: relative;
+    top: -40px;
+  }
+
   .playerScore {
     align-items: center;
     display: flex;

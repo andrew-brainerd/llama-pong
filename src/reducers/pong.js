@@ -1,15 +1,19 @@
-import { NUM_GAMES } from '../constants/pong';
+import { NUM_GAMES, PLAYER1, PLAYER2 } from '../constants/pong';
 import {
   SET_PAGE_TITLE,
   UPDATE_CONFIG,
   START_GAME,
   UPDATE_SCORE,
   CREATING_GAME,
-  GAME_CREATED
+  GAME_CREATED,
+  CREATING_PLAYER,
+  PLAYER_CREATED
 } from '../actions/pong';
 
 const initialState = {
   isGameOver: false,
+  isCreatingGame: false,
+  isCreatingPlayer: false,
   config: {
     [NUM_GAMES]: 1
   },
@@ -36,6 +40,16 @@ export default function pong (state = initialState, action) {
           ...state.config,
           [action.key]: action.value
         }
+      };
+    case CREATING_PLAYER:
+      return {
+        ...state,
+        isCreatingPlayer: true
+      };
+    case PLAYER_CREATED:
+      return {
+        ...state,
+        isCreatingPlayer: false
       };
     case CREATING_GAME:
       return {
