@@ -12,7 +12,7 @@ const PlayerModal = ({ playerNum, closeModal, setPlayer }) => {
   const [isNewPlayer, setIsNewPlayer] = useState(null);
   const [isExistingPlayer, setIsExistingPlayer] = useState(null);
   const [isTempPlayer, setIsTempPlayer] = useState(null);
-  const [scannedPlayer, setScannedPlayer] = useState('');
+  const [scannedPlayerId, setScannedPlayerId] = useState('');
 
   return (
     <Modal
@@ -21,7 +21,7 @@ const PlayerModal = ({ playerNum, closeModal, setPlayer }) => {
       closeModal={() => {
         setIsNewPlayer(null);
         setIsExistingPlayer(null);
-        setScannedPlayer('');
+        setScannedPlayerId('');
         closeModal();
       }}
     >
@@ -48,7 +48,7 @@ const PlayerModal = ({ playerNum, closeModal, setPlayer }) => {
         {isNewPlayer && <NewPlayer playerNum={playerNum} closeModal={closeModal} />}
         {isExistingPlayer &&
           <div className={styles.existingPlayer}>
-            {!scannedPlayer ?
+            {!scannedPlayerId ?
               <div className={styles.qrReader}>
                 <QrReader
                   style={{ height: 200, width: 200 }}
@@ -56,21 +56,16 @@ const PlayerModal = ({ playerNum, closeModal, setPlayer }) => {
                   mirrorVideo
                   delay={300}
                   legacyMode={isMobile}
-                  onScan={data => {
-                    if (data) {
-                      console.log('Scan: %o', data);
-                      setScannedPlayer(data);
-                    }
-                  }}
+                  onScan={data => data && setScannedPlayerId(data)}
                   onError={error => console.error('QR Error', error)}
                 />
               </div> : (
                 <div className={styles.playerNameDisplay}>
-                  <div className={styles.playerName}>{scannedPlayer}</div>
+                  <div className={styles.playerName}>{scannedPlayerId}</div>
                   <Button
                     text={'Ready'}
                     onClick={() => {
-                      setPlayer(playerNum, scannedPlayer);
+                      setPlayer(playerNum, scannedPlayerId);
                       setIsNewPlayer(null);
                       setIsExistingPlayer(null);
                       closeModal();
@@ -79,7 +74,7 @@ const PlayerModal = ({ playerNum, closeModal, setPlayer }) => {
                   <Button
                     text={'Rescan'}
                     onClick={() => {
-                      setScannedPlayer('');
+                      setScannedPlayerId('');
                       setIsExistingPlayer(true);
                     }}
                   />
