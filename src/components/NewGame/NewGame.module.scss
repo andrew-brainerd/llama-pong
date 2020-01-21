@@ -6,7 +6,8 @@
   align-content: center;
   display: flex;
   flex-direction: column;
-  margin: 5px;
+  margin: 5px auto;
+  max-width: 1200px;
 
   .buttonContainer {
     display: flex;

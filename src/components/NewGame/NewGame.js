@@ -6,7 +6,7 @@ import Button from '../common/Button/Button';
 import PlayerModal from '../Players/PlayerModal/container';
 import styles from './NewGame.module.scss';
 
-const NewGame = ({ numGames, player1, player2, navTo, updateConfig, startGame }) => {
+const NewGame = ({ numGames, player1, player2, isCreatingGame, updateConfig, createGame }) => {
   const gameId = '00000';
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -69,11 +69,8 @@ const NewGame = ({ numGames, player1, player2, navTo, updateConfig, startGame })
             styles.button,
             styles.startButton
           ].join(' ')}
-          onClick={() => {
-            startGame();
-            navTo(GAME_ROUTE.replace(':gameId', gameId));
-          }}
-          disabled={!player1 || !player2}
+          onClick={() => createGame(player1, player2)}
+          disabled={!player1 || !player2 || isCreatingGame}
         >
           Start Game
         </Button>
@@ -99,7 +96,7 @@ NewGame.propTypes = {
   }),
   navTo: func.isRequired,
   updateConfig: func.isRequired,
-  startGame: func.isRequired
+  createGame: func.isRequired
 };
 
 export default NewGame;

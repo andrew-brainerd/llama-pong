@@ -1,5 +1,6 @@
 @import '../../../styles/colors.scss';
 @import '../../../styles/mixins.scss';
+@import '../../../styles/sizing.scss';
 
 .modal {
   border-radius: 5px;
@@ -56,6 +57,7 @@
 
 .overlay {
   background-color: none;
+  height: 100%;
   position: fixed;
   top: 0;
   left: 0;
@@ -63,4 +65,16 @@
   bottom: 0;
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
+}
+
+@media screen and (max-width: $mobileWidth) {
+  .modal {
+    height: 100%;
+    max-width: 100%;
+    width: 98%;
+
+    .content {
+      height: 80%;
+    }
+  }
 }

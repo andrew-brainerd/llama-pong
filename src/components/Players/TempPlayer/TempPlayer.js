@@ -18,6 +18,7 @@ const TempPlayer = ({ playerNum, updateConfig, closeModal }) => {
     <div className={styles.newPLayer}>
       <TextInput
         placeholder={'Enter player name'}
+        value={playerName}
         onChange={setPlayerName}
         onPressEnter={() => {
           updateConfig(configKey, tempPlayer);

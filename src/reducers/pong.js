@@ -3,7 +3,9 @@ import {
   SET_PAGE_TITLE,
   UPDATE_CONFIG,
   START_GAME,
-  UPDATE_SCORE
+  UPDATE_SCORE,
+  CREATING_GAME,
+  GAME_CREATED
 } from '../actions/pong';
 
 const initialState = {
@@ -11,6 +13,7 @@ const initialState = {
   config: {
     [NUM_GAMES]: 1
   },
+  gameId: null,
   scoreboard: {
     currentScore: {
       player1: 0,
@@ -33,6 +36,17 @@ export default function pong (state = initialState, action) {
           ...state.config,
           [action.key]: action.value
         }
+      };
+    case CREATING_GAME:
+      return {
+        ...state,
+        isCreatingGame: true
+      };
+    case GAME_CREATED:
+      return {
+        ...state,
+        isCreatingGame: false,
+        gameId: action.gameId
       };
     case START_GAME:
       return {

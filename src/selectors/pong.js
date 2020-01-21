@@ -1,4 +1,6 @@
-import { path } from 'ramda';
+import { path, pathEq } from 'ramda';
+
+export const getIsCreatingGame = pathEq(true, ['pong', 'isCreatingGame']);
 
 export const getConfiguration = path(['pong', 'config']);
 

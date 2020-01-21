@@ -4,33 +4,40 @@ const basicJsonHeader = { 'Content-Type': 'application/json' };
 
 const LLAMA_PONG_API_URL = process.env.REACT_APP_LLAMA_PONG_API_URL || 'http://localhost:5000';
 
-export const createGame = async name => {
-  const response = await fetch(`${LLAMA_PONG_API_URL}/api/game`, {
+export const createGame = async (player1, player2) => {
+  const response = await fetch(`${LLAMA_PONG_API_URL}/api/games`, {
     method: 'POST',
     headers: basicJsonHeader,
-    body: JSON.stringify({ name })
+    body: JSON.stringify({ player1, player2 })
   });
 
   handleResponse(response, 201);
-  const json = await response.json();
+  const game = await response.json();
 
-  return json;
+  return game;
 };
 
 export const createPlayer = async playerName => {
-  const mockPlayer = {
-    playerId: '0',
-    name: playerName
-  };
+  const response = await fetch(`${LLAMA_PONG_API_URL}/api/players`, {
+    method: 'POST',
+    headers: basicJsonHeader,
+    body: JSON.stringify({ name: playerName })
+  });
 
-  return mockPlayer;
+  handleResponse(response, 201);
+  const player = await response.json();
+
+  return player;
 };
 
 export const getPlayer = async playerId => {
-  const mockPlayer = {
-    playerId: '0',
-    name: 'A. Brainerd'
-  };
+  const response = await fetch(`${LLAMA_PONG_API_URL}/api/players/${playerId}`, {
+    method: 'GET',
+    headers: basicJsonHeader,
+  });
 
-  return mockPlayer;
+  handleResponse(response);
+  const player = await response.json();
+
+  return player;
 };
