@@ -14,7 +14,7 @@ const Game = ({ height, pathname, scoreboard, isLoadingGame, loadGame }) => {
   const scoreBoardHeight = height - HEADER_HEIGHT;
 
   useEffect(() => {
-    // !isLoadingGame && !isNewGame && loadGame(getGameId(pathname));
+    !isLoadingGame && loadGame(getGameId(pathname));
   }, [pathname]);
 
   useEffect(() => {

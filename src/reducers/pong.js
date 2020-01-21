@@ -17,6 +17,7 @@ import {
 const initialState = {
   isGameOver: false,
   isCreatingGame: false,
+  isNewGame: true,
   isLoadingGame: false,
   isUpdatingScore: false,
   isCreatingPlayer: false,
@@ -32,7 +33,7 @@ const initialState = {
   }
 };
 
-export default function pong(state = initialState, action) {
+export default function pong (state = initialState, action) {
   switch (action.type) {
     case SET_PAGE_TITLE:
       return {
@@ -104,7 +105,7 @@ export default function pong(state = initialState, action) {
       return {
         ...state,
         isUpdatingScore: true
-      }
+      };
     case SCORE_UPDATED:
       return {
         ...state,
@@ -123,7 +124,7 @@ export default function pong(state = initialState, action) {
           [PLAYER1]: null,
           [PLAYER2]: null
         }
-      }
+      };
     default:
       return state;
   }

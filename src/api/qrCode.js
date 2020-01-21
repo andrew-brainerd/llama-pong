@@ -1,4 +1,4 @@
-import { handleResponse, formatQueryString } from './tools';
+import { formatQueryString } from './tools';
 
 const QR_CODE_API_URL = 'https://api.qrserver.com/v1/create-qr-code/';
 

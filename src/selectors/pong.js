@@ -1,8 +1,10 @@
 import { compose, path, pathEq, pathOr, prop } from 'ramda';
 
-export const getIsCreatingGame = pathEq(true, ['pong', 'isCreatingGame']);
+export const getIsCreatingGame = path(['pong', 'isCreatingGame']);
 
-export const getIsLoadingGame = pathEq(true, ['pong', 'isLoadingGame']);
+export const getIsLoadingGame = path(['pong', 'isLoadingGame']);
+
+export const getIsNewGame = path(['pong', 'isNewGame']);
 
 export const getIsCreatingPlayer = pathEq(true, ['pong', 'isCreatingPlayer']);
 

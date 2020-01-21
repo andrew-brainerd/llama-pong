@@ -71,18 +71,18 @@ export const updateScore = (playerNum, newScore) => async (dispatch, getState) =
   const gameId = getGameId(getState());
 
   const player1 = {
-    playerId: getConfiguration(getState())[PLAYER1]['player1'],
+    playerId: getConfiguration(getState())[PLAYER1].player1,
     score: getCurrentScore(getState())[PLAYER1]
   };
 
   const player2 = {
-    playerId: getConfiguration(getState())[PLAYER2]['player2'],
+    playerId: getConfiguration(getState())[PLAYER2].player2,
     score: getCurrentScore(getState())[PLAYER2]
   };
 
   dispatch(updatingScore);
   pong.updateScore(gameId, player1, player2).catch(
-    err => console.error('Failed to update score')
+    err => console.error('Failed to update score', err)
   );
 };
 

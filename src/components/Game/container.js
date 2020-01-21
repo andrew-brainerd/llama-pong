@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { compose } from 'ramda';
 import withSizes from 'react-sizes';
 import { getPathname } from '../../selectors/routing';
-import { getScoreboard, getIsLoadingGame } from '../../selectors/pong';
+import { getScoreboard, getIsLoadingGame, getIsNewGame } from '../../selectors/pong';
 import { loadGame } from '../../actions/pong';
 import Game from './Game';
 
@@ -11,7 +11,8 @@ const mapSizesToProps = ({ height }) => ({ height });
 const mapStateToProps = state => ({
   pathname: getPathname(state),
   scoreboard: getScoreboard(state),
-  isLoadingGame: getIsLoadingGame(state)
+  isLoadingGame: getIsLoadingGame(state),
+  isNewGame: getIsNewGame(state)
 });
 
 const mapDispatchToProps = dispatch => ({

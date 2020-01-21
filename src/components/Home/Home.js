@@ -21,6 +21,7 @@ const Home = ({ navTo }) => (
       <Button
         className={styles.button}
         onClick={() => navTo(LOAD_GAME_ROUTE, 'Load Existing Game')}
+        disabled
       >
         Load Game
       </Button>
