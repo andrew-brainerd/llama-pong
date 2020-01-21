@@ -7,6 +7,8 @@ import { getConfiguration } from '../selectors/pong';
 export const SET_PAGE_TITLE = 'SET_PAGE_TITLE';
 export const CREATING_GAME = 'CREATING_GAME';
 export const GAME_CREATED = 'GAME_CREATED';
+export const LOADING_GAME = 'LOADING_GAME';
+export const GAME_LOADED = 'GAME_LOADED';
 export const CREATING_PLAYER = 'CREATING_PLAYER';
 export const PLAYER_CREATED = 'PLAYER_CREATED';
 export const LOADING_PLAYER = 'LOADING_PLAYER';
@@ -20,6 +22,10 @@ export const setPageTitle = title => ({ type: SET_PAGE_TITLE, title });
 export const creatingGame = { type: CREATING_GAME };
 
 export const gameCreated = gameId => ({ type: GAME_CREATED, gameId });
+
+export const loadingGame = { type: LOADING_GAME };
+
+export const gameLoaded = game => ({ type: GAME_LOADED, game });
 
 export const creatingPlayer = { type: CREATING_PLAYER };
 
@@ -43,6 +49,13 @@ export const createGame = (player1, player2) => async dispatch => {
       dispatch(startGame());
       dispatch(navTo(GAME_ROUTE.replace(':gameId', gameId)));
     }
+  );
+};
+
+export const loadGame = gameId => async dispatch => {
+  dispatch(loadingGame);
+  pong.getGame(gameId).then(
+    game => dispatch(gameLoaded(game))
   );
 };
 
