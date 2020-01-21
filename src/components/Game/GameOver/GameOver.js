@@ -1,9 +1,10 @@
 import React from 'react';
 import { shape, string, number, func } from 'prop-types';
 import Button from '../../common/Button/Button';
+import { HOME_ROUTE } from '../../../constants/routes';
 import styles from './GameOver.module.scss';
 
-const GameOver = ({ player1, player2, winningPlayerNum, playAgain }) => {
+const GameOver = ({ player1, player2, winningPlayerNum, playAgain, navTo }) => {
   const { name: player1Name } = player1 || {};
   const { name: player2Name } = player2 || {};
   const winner = winningPlayerNum === 1 ? player1Name : player2Name;
@@ -16,6 +17,11 @@ const GameOver = ({ player1, player2, winningPlayerNum, playAgain }) => {
         className={styles.playAgainButton}
         text={'Play Again'}
         onClick={playAgain}
+      />
+      <Button
+        className={styles.playAgainButton}
+        text={'Quit'}
+        onClick={() => navTo(HOME_ROUTE)}
       />
     </div>
   );

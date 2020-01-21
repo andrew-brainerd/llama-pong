@@ -6,7 +6,7 @@ import Button from '../../common/Button/Button';
 import styles from './TempPlayer.module.scss';
 
 const TempPlayer = ({ playerNum, updateConfig, closeModal }) => {
-  const [playerName, setPlayerName] = useState('');
+  const [playerName, setPlayerName] = useState(`Player ${playerNum}`);
   const configKey = playerNum === 1 ? PLAYER1 : PLAYER2;
 
   const tempPlayer = {

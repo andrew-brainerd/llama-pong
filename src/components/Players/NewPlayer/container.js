@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  createPlayer: playerName => dispatch(createPlayer(playerName))
+  createPlayer: (playerName, playerNum) => dispatch(createPlayer(playerName, playerNum))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewPlayer);
