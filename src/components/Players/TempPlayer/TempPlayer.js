@@ -30,7 +30,7 @@ const TempPlayer = ({ playerNum, updateConfig, closeModal }) => {
         text={'Set Temporary Name'}
         onClick={() => {
           updateConfig(configKey, tempPlayer);
-          closeModal();;
+          closeModal();
         }}
         disabled={playerName === ''}
       />

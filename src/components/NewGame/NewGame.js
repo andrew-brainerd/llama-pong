@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { number, shape, string, func } from 'prop-types';
-import { GAME_ROUTE } from '../../constants/routes';
+import { number, shape, string, bool, func } from 'prop-types';
 import { NUM_GAMES } from '../../constants/pong';
 import Button from '../common/Button/Button';
 import PlayerModal from '../Players/PlayerModal/container';
 import styles from './NewGame.module.scss';
 
 const NewGame = ({ numGames, player1, player2, isCreatingGame, updateConfig, createGame }) => {
-  const gameId = '00000';
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -96,6 +94,7 @@ NewGame.propTypes = {
     _id: string,
     name: string
   }),
+  isCreatingGame: bool,
   navTo: func.isRequired,
   updateConfig: func.isRequired,
   createGame: func.isRequired

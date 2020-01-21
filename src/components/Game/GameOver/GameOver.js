@@ -37,7 +37,8 @@ GameOver.propTypes = {
     name: string
   }),
   winningPlayerNum: number.isRequired,
-  playAgain: func.isRequired
+  playAgain: func.isRequired,
+  navTo: func.isRequired
 };
 
 export default GameOver;

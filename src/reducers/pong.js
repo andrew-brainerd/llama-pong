@@ -1,4 +1,4 @@
-import { NUM_GAMES, PLAYER1, PLAYER2 } from '../constants/pong';
+import { NUM_GAMES } from '../constants/pong';
 import {
   SET_PAGE_TITLE,
   UPDATE_CONFIG,

@@ -33,7 +33,7 @@ export const createPlayer = async playerName => {
 export const getPlayer = async playerId => {
   const response = await fetch(`${LLAMA_PONG_API_URL}/api/players/${playerId}`, {
     method: 'GET',
-    headers: basicJsonHeader,
+    headers: basicJsonHeader
   });
 
   handleResponse(response);
