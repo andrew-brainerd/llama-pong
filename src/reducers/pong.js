@@ -8,14 +8,17 @@ import {
   GAME_LOADED,
   CREATING_PLAYER,
   PLAYER_CREATED,
-  UPDATE_SCORE,
-  START_GAME
+  UPDATING_SCORE,
+  SCORE_UPDATED,
+  START_GAME,
+  RESET_PLAYERS
 } from '../actions/pong';
 
 const initialState = {
   isGameOver: false,
   isCreatingGame: false,
   isLoadingGame: false,
+  isUpdatingScore: false,
   isCreatingPlayer: false,
   config: {
     [NUM_GAMES]: 1
@@ -23,8 +26,8 @@ const initialState = {
   gameId: null,
   scoreboard: {
     currentScore: {
-      player1: 0,
-      player2: 0
+      [PLAYER1]: 0,
+      [PLAYER2]: 0
     }
   }
 };
@@ -64,6 +67,7 @@ export default function pong(state = initialState, action) {
       return {
         ...state,
         isLoadingGame: false,
+        gameId: action.game.gameId,
         config: {
           ...state.config,
           [PLAYER1]: action.game.player1,
@@ -71,8 +75,8 @@ export default function pong(state = initialState, action) {
         },
         scoreboard: {
           currentScore: {
-            player1: action.game.player1.score,
-            player2: action.game.player1.score
+            [PLAYER1]: action.game.player1.score,
+            [PLAYER2]: action.game.player1.score
           }
         }
       };
@@ -91,14 +95,20 @@ export default function pong(state = initialState, action) {
         ...state,
         scoreboard: {
           currentScore: {
-            player1: action.player1 || 0,
-            player2: action.player2 || 0
+            [PLAYER1]: action.player1 || 0,
+            [PLAYER2]: action.player2 || 0
           }
         }
       };
-    case UPDATE_SCORE:
+    case UPDATING_SCORE:
       return {
         ...state,
+        isUpdatingScore: true
+      }
+    case SCORE_UPDATED:
+      return {
+        ...state,
+        isUpdatingScore: false,
         scoreboard: {
           currentScore: {
             ...state.scoreboard.currentScore,
@@ -106,6 +116,14 @@ export default function pong(state = initialState, action) {
           }
         }
       };
+    case RESET_PLAYERS:
+      return {
+        ...state,
+        config: {
+          [PLAYER1]: null,
+          [PLAYER2]: null
+        }
+      }
     default:
       return state;
   }

@@ -12,10 +12,10 @@ export const createCode = async playerId => {
     method: 'GET'
   });
 
-  handleResponse(response);
-  const json = await response.json();
+  const blob = await response.blob();
+  console.log(blob);
 
-  return json;
+  return blob;
 };
 
 export const getPlayer = async playerId => {

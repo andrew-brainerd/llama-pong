@@ -14,13 +14,11 @@ const Game = ({ height, pathname, scoreboard, isLoadingGame, loadGame }) => {
   const scoreBoardHeight = height - HEADER_HEIGHT;
 
   useEffect(() => {
-    !isLoadingGame && loadGame(getGameId(pathname));
+    // !isLoadingGame && !isNewGame && loadGame(getGameId(pathname));
   }, [pathname]);
 
   useEffect(() => {
-    const gameStatus = getGameStatus(scoreboard);
-    console.log(`Game Status: %o`, gameStatus);
-    setGameStatus(gameStatus);
+    setGameStatus(getGameStatus(scoreboard));
   }, [scoreboard]);
 
   return gameStatus.isGameOver ?

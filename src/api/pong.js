@@ -29,6 +29,19 @@ export const getGame = async gameId => {
   return game;
 };
 
+export const updateScore = async (gameId, player1, player2) => {
+  const response = await fetch(`${LLAMA_PONG_API_URL}/api/games/${gameId}`, {
+    method: 'PUT',
+    headers: basicJsonHeader,
+    body: JSON.stringify({ player1, player2 })
+  });
+
+  handleResponse(response);
+  const game = await response.json();
+
+  return game;
+};
+
 export const createPlayer = async playerName => {
   const response = await fetch(`${LLAMA_PONG_API_URL}/api/players`, {
     method: 'POST',
