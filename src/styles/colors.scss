@@ -1,6 +1,9 @@
 $purple: rgba(77, 39, 122, 0.5);
 $purpleLight: rgba(67, 34, 105, 1);
 
+$orange: rgba(227, 157, 86, 0.5);
+$orangeLight: rgba(227, 157, 86, 1);
+
 $paddle-red: #db4b40;
 $paddle-gray: #57524e;
 $paddle-ball: #fff2d9;
@@ -50,3 +53,10 @@ $gray-85: #262626;
 $gray-90: #191919;
 $gray-95: #0d0d0d;
 $gray-100: #000000;
+
+:export {
+  purple: $purple;
+  lightPurple: $purpleLight;
+  orange: $orange;
+  lightOrange: $orangeLight;
+}

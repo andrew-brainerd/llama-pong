@@ -2,6 +2,7 @@ import React from 'react';
 import { object } from 'prop-types';
 import { ConnectedRouter } from 'connected-react-router';
 import { Route, Switch } from 'react-router-dom';
+import themes from '../../styles/themes';
 import Header from '../common/Header/container';
 import {
   HOME_ROUTE,
@@ -13,10 +14,12 @@ import NewGame from '../NewGame/container';
 import Game from '../Game/container';
 import styles from './App.module.scss';
 
+export const ThemeContext = React.createContext();
+
 const App = ({ history }) => (
   <div className={styles.app}>
     <ConnectedRouter history={history}>
-      <>
+      <ThemeContext.Provider value={themes.purple}>
         <Header />
         <div className={styles.content}>
           <Switch>
@@ -25,7 +28,7 @@ const App = ({ history }) => (
             <Route path={GAME_ROUTE} exact component={Game} />
           </Switch>
         </div>
-      </>
+      </ThemeContext.Provider>
     </ConnectedRouter >
   </div>
 );
