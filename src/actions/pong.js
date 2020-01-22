@@ -71,12 +71,12 @@ export const updateScore = (playerNum, newScore) => async (dispatch, getState) =
   const gameId = getGameId(getState());
 
   const player1 = {
-    playerId: getConfiguration(getState())[PLAYER1].player1,
+    playerId: getConfiguration(getState())[PLAYER1],
     score: getCurrentScore(getState())[PLAYER1]
   };
 
   const player2 = {
-    playerId: getConfiguration(getState())[PLAYER2].player2,
+    playerId: getConfiguration(getState())[PLAYER2],
     score: getCurrentScore(getState())[PLAYER2]
   };
 

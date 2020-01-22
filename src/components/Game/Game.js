@@ -15,7 +15,7 @@ const Game = ({ height, pathname, scoreboard, isLoadingGame, loadGame }) => {
 
   useEffect(() => {
     !isLoadingGame && loadGame(getGameId(pathname));
-  }, [pathname]);
+  }, [pathname, isLoadingGame, loadGame]);
 
   useEffect(() => {
     setGameStatus(getGameStatus(scoreboard));
