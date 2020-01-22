@@ -16,7 +16,7 @@ const Game = ({ height, pathname, player1, player2, scoreboard, isLoadingGame, l
 
   useEffect(() => {
     shouldLoadGame && loadGame(getGameId(pathname));
-  }, [shouldLoadGame, loadGame]);
+  }, [shouldLoadGame, loadGame, pathname]);
 
   useEffect(() => {
     setGameStatus(getGameStatus(scoreboard));
