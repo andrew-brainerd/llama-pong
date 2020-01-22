@@ -21,7 +21,19 @@ export default {
   },
   orange: {
     name: 'Orange',
+    color: colors.darkText,
     normal: colors.orange,
     light: colors.lightOrange
+  },
+  yellow: {
+    name: 'Yellow',
+    color: colors.darkText,
+    normal: colors.yellow,
+    light: colors.lightYellow
+  },
+  blue: {
+    name: 'Blue',
+    normal: colors.blue,
+    light: colors.lightBlue
   }
 };

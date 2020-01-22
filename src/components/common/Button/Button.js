@@ -7,7 +7,8 @@ import styles from './Button.module.scss';
 const Button = ({ children, className, selected, disabled, onClick, text }) => {
   const { theme } = useContext(ThemeContext);
   const themeStyles = {
-    background: theme.normal
+    background: theme.normal,
+    color: theme.color
   };
 
   return (

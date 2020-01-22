@@ -1,8 +1,14 @@
+$orange: rgba(255, 220, 113, 1);
+$orangeLight: rgba($orange, 0.7);
+
+$yellow: rgba(255, 223, 26, 1);
+$yellowLight: rgba($yellow, 0.7);
+
+$blue: rgba(18, 40, 178, 1);
+$blueLight: rgba($blue, 0.7);
+
 $purple: rgba(77, 39, 122, 0.5);
 $purpleLight: rgba(67, 34, 105, 1);
-
-$orange: rgba(255, 197, 19, 1);;
-$orangeLight: rgba($orange, 0.7);
 
 $gray-0: #ffffff;
 $gray-2-5: #f9f9f9;
@@ -55,8 +61,13 @@ $success-green-7: rgba(40, 143, 48, 0.7);
 $success-green-5: rgba(40, 143, 48, 0.5);
 
 :export {
+  darkText: $gray-85;
   purple: $purple;
   lightPurple: $purpleLight;
   orange: $orange;
   lightOrange: $orangeLight;
+  yellow: $yellow;
+  lightYellow: $yellowLight;
+  blue: $blue;
+  lightBlue: $blueLight;
 }
