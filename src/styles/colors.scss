@@ -1,34 +1,8 @@
 $purple: rgba(77, 39, 122, 0.5);
 $purpleLight: rgba(67, 34, 105, 1);
 
-$orange: rgba(227, 157, 86, 0.5);
-$orangeLight: rgba(227, 157, 86, 1);
-
-$paddle-red: #db4b40;
-$paddle-gray: #57524e;
-$paddle-ball: #fff2d9;
-
-$primaryColor: #191919;
-$primaryTextColor: #f2ecf9;
-
-$secondaryColor: $purple;
-$secondaryColorLight: $purpleLight;
-
-$tertiaryColor: #6785a3;
-
-$modalBackground: #454545;
-$modalBorder: #e7e7e7;
-
-$buttonBackground: $secondaryColor;
-$buttonBackgroundHover: $secondaryColorLight;
-
-$errorText: rgba(196, 110, 72, 1);
-$errorText-5: rgba(196, 110, 72, 0.5);
-
-$success-green: rgba(40, 143, 48, 1);
-$success-green-9: rgba(40, 143, 48, 0.9);
-$success-green-7: rgba(40, 143, 48, 0.7);
-$success-green-5: rgba(40, 143, 48, 0.5);
+$orange: rgba(255, 197, 19, 1);;
+$orangeLight: rgba($orange, 0.7);
 
 $gray-0: #ffffff;
 $gray-2-5: #f9f9f9;
@@ -53,6 +27,32 @@ $gray-85: #262626;
 $gray-90: #191919;
 $gray-95: #0d0d0d;
 $gray-100: #000000;
+
+$paddle-red: #db4b40;
+$paddle-gray: #57524e;
+$paddle-ball: #fff2d9;
+
+$primaryColor: $gray-90;
+$primaryTextColor: #f2ecf9;
+
+$secondaryColor: $purple;
+$secondaryColorLight: $purpleLight;
+
+$tertiaryColor: #6785a3;
+
+$modalBackground: #454545;
+$modalBorder: #e7e7e7;
+
+$buttonBackground: $secondaryColor;
+$buttonBackgroundHover: $secondaryColorLight;
+
+$errorText: rgba(196, 110, 72, 1);
+$errorText-5: rgba(196, 110, 72, 0.5);
+
+$success-green: rgba(40, 143, 48, 1);
+$success-green-9: rgba(40, 143, 48, 0.9);
+$success-green-7: rgba(40, 143, 48, 0.7);
+$success-green-5: rgba(40, 143, 48, 0.5);
 
 :export {
   purple: $purple;
