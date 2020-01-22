@@ -1,25 +1,20 @@
+$purple: rgba(77, 39, 122, 0.5);
+$purpleLight: rgba(67, 34, 105, 1);
+
 $paddle-red: #db4b40;
 $paddle-gray: #57524e;
 $paddle-ball: #fff2d9;
 
 $primaryColor: #191919;
-// $secondaryColor: rgb(113, 110, 116);
-$secondaryColor: rgba(77, 39, 122, 0.5);
+$primaryTextColor: #f2ecf9;
+
+$secondaryColor: $purple;
+$secondaryColorLight: $purpleLight;
+
 $tertiaryColor: #6785a3;
 
 $modalBackground: #454545;
 $modalBorder: #e7e7e7;
-
-$secondaryColorLight: rgba(67, 34, 105, 1);
-$secondaryColorLight-8: rgba(67, 34, 105, 0.8);
-
-$primaryTextColor: whitesmoke;
-
-$accentColor: rgba(139, 196, 72, 0.7);
-$mutedColor: #c4bf48;
-
-$mainBackground: $primaryColor;
-$mainColor: #f2ecf9;
 
 $buttonBackground: $secondaryColor;
 $buttonBackgroundHover: $secondaryColorLight;

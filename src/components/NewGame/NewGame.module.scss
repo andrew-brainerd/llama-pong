@@ -19,13 +19,6 @@
       height: 350px;
       opacity: 0.8;
 
-      &.selected {
-        background: $secondaryColorLight;
-        border: 2px solid $paddle-ball;
-        opacity: 1;
-        transform: scale(1.1);
-      }
-
       &:hover:not(.selected) {
         background: $secondaryColorLight;
         border-color: $secondaryColor;

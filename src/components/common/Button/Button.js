@@ -3,10 +3,11 @@ import { node, bool, func, string } from 'prop-types';
 import noop from '../../../utils/noop';
 import styles from './Button.module.scss';
 
-const Button = ({ children, className, disabled, onClick, text }) => (
+const Button = ({ children, className, selected, disabled, onClick, text }) => (
   <div
     className={[
       styles.button,
+      selected ? styles.selected : '',
       disabled ? styles.disabled : '',
       className
     ].join(' ')}

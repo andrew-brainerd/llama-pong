@@ -3,7 +3,7 @@
 
 .header {
   background: $secondaryColor;
-  border-bottom: 1px solid $buttonBackground;
+  border-bottom: 1px solid $secondaryColor;
   margin-bottom: 30px;
   position: relative;
 
@@ -25,7 +25,7 @@
       align-self: flex-end;
 
       .myPods {
-        border-color: $buttonBackground;
+        border-color: $secondaryColor;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
         box-shadow: none;
