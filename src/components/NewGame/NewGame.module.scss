@@ -17,24 +17,6 @@
     .gameTypeButton {
       font-size: 2.5em;
       height: 350px;
-      opacity: 0.8;
-
-      &.selected {
-        background: $secondaryColorLight;
-        border: 2px solid $paddle-ball;
-        opacity: 1;
-        transform: scale(1.1);
-      }
-
-      &:hover:not(.selected) {
-        background: $secondaryColorLight;
-        border-color: $secondaryColor;
-        opacity: 1;
-      }
-
-      .buttonText {
-        font-style: italic;
-      }
     }
   }
 
@@ -50,24 +32,15 @@
   }
 
   .button {
-    font-size: 1.5em;
     width: 250px;
 
-    &:hover {
-      background: $secondaryColorLight;
-      border-color: $secondaryColor;
-    }
-
-    .buttonText {
-      font-style: italic;
-    }
-
     &.startButton {
-      background: $success-green-9;
+      background: $success-green-9 !important;
+      font-size: 1.5em;
       margin-top: 100px;
 
-      &:hover:not(.disabled) {
-        background: $success-green;
+      &:hover {
+        background: $success-green !important;
       }
     }
   }

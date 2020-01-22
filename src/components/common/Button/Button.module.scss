@@ -4,6 +4,7 @@
 .button {
   align-items: center;
   background: $buttonBackground;
+  border: 2px solid transparent;
   border-radius: 7px;
   color: $primaryTextColor;
   cursor: pointer;
@@ -11,14 +12,23 @@
   font-size: 0.9em;
   justify-content: center;
   margin: 20px auto;
+  opacity: 0.8;
   padding: 20px 0;
   text-align: center;
   transition: 0.3s all;
   user-select: none;
   width: 150px;
 
-  &:hover {
+  &.selected {
     background: $buttonBackgroundHover;
+    border: 2px solid $paddle-ball;
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  &:hover:not(.selected) {
+    background: $buttonBackgroundHover;
+    opacity: 1;
     transform: scale(1.1);
   }
 }

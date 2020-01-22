@@ -16,32 +16,32 @@ const NewGame = ({ numGames, player1, player2, isCreatingGame, updateConfig, cre
           <Button
             className={[
               styles.button,
-              styles.gameTypeButton,
-              numGames === 1 ? styles.selected : ''
+              styles.gameTypeButton
             ].join(' ')}
             onClick={() => updateConfig(NUM_GAMES, 1)}
+            selected={numGames === 1}
           >
             1 Game
           </Button>
           <Button
             className={[
               styles.button,
-              styles.gameTypeButton,
-              numGames === 3 ? styles.selected : ''
+              styles.gameTypeButton
             ].join(' ')}
             onClick={() => updateConfig(NUM_GAMES, 3)}
             disabled
+            selected={numGames === 3}
           >
             Best of 3
           </Button>
           <Button
             className={[
               styles.button,
-              styles.gameTypeButton,
-              numGames === 5 ? styles.selected : ''
+              styles.gameTypeButton
             ].join(' ')}
             onClick={() => updateConfig(NUM_GAMES, 5)}
             disabled
+            selected={numGames === 5}
           >
             Best of 5
           </Button>
@@ -54,6 +54,7 @@ const NewGame = ({ numGames, player1, player2, isCreatingGame, updateConfig, cre
               setSelectedPlayer(1);
               setIsModalOpen(true);
             }}
+            selected={selectedPlayer === 1}
           />
           <Button
             className={styles.playerName}
@@ -62,6 +63,7 @@ const NewGame = ({ numGames, player1, player2, isCreatingGame, updateConfig, cre
               setSelectedPlayer(2);
               setIsModalOpen(true);
             }}
+            selected={selectedPlayer === 2}
           />
         </div>
         <Button
@@ -78,7 +80,10 @@ const NewGame = ({ numGames, player1, player2, isCreatingGame, updateConfig, cre
       {isModalOpen &&
         <PlayerModal
           playerNum={selectedPlayer}
-          closeModal={() => setIsModalOpen(false)}
+          closeModal={() => {
+            setSelectedPlayer(null);
+            setIsModalOpen(false);
+          }}
         />}
     </>
   );
