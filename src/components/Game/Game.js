@@ -9,13 +9,14 @@ const HEADER_HEIGHT = 120;
 
 const getGameId = pathname => pathname.split('/')[2];
 
-const Game = ({ height, pathname, scoreboard, isLoadingGame, loadGame }) => {
+const Game = ({ height, pathname, player1, player2, scoreboard, isLoadingGame, loadGame }) => {
   const [gameStatus, setGameStatus] = useState({});
   const scoreBoardHeight = height - HEADER_HEIGHT;
+  const shouldLoadGame = !isLoadingGame && !player1 && !player2;
 
   useEffect(() => {
-    !isLoadingGame && loadGame(getGameId(pathname));
-  }, [pathname, isLoadingGame, loadGame]);
+    shouldLoadGame && loadGame(getGameId(pathname));
+  }, [shouldLoadGame, loadGame]);
 
   useEffect(() => {
     setGameStatus(getGameStatus(scoreboard));
