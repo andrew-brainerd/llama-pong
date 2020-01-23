@@ -35,12 +35,12 @@
     width: 250px;
 
     &.startButton {
-      background: $success-green-9 !important;
+      background: $success-green-9;
       font-size: 1.5em;
       margin-top: 100px;
 
       &:hover {
-        background: $success-green !important;
+        background: $success-green;
       }
     }
   }

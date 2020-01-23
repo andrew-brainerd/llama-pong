@@ -1,0 +1,74 @@
+@mixin buttonColors {
+  &.purple {
+    background: $purple;
+
+    &.selected {
+      background: $purpleLight;
+    }
+
+    &:hover:not(.selected) {
+      background: $purpleLight;
+    }
+  }
+
+  &.red {
+    background: $red;
+
+    &.selected {
+      background: $redLight;
+    }
+
+    &:hover:not(.selected) {
+      background: $redLight;
+    }
+  }
+
+  &.yellow {
+    background: $yellow;
+    color: $secondaryTextColor;
+
+    &.selected {
+      background: $yellowLight;
+    }
+
+    &:hover:not(.selected) {
+      background: $yellowLight;
+    }
+  }
+
+  &.teal {
+    background: $teal;
+
+    &.selected {
+      background: $tealLight;
+    }
+
+    &:hover:not(.selected) {
+      background: $tealLight;
+    }
+  }
+
+  &.blue {
+    background: $blue;
+
+    &.selected {
+      background: $blueLight;
+    }
+
+    &:hover:not(.selected) {
+      background: $blueLight;
+    }
+  }
+
+  &.green {
+    background: $green;
+
+    &.selected {
+      background: $greenLight;
+    }
+
+    &:hover:not(.selected) {
+      background: $greenLight;
+    }
+  }
+}

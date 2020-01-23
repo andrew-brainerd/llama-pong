@@ -4,6 +4,7 @@ import { PLAYER1, PLAYER2 } from '../constants/pong';
 import { GAME_ROUTE } from '../constants/routes';
 import { getConfiguration, getGameId, getCurrentScore } from '../selectors/pong';
 import wait from '../utils/wait';
+import colors from '../styles/colors.scss';
 
 export const SET_PAGE_TITLE = 'SET_PAGE_TITLE';
 export const CREATING_GAME = 'CREATING_GAME';
@@ -121,8 +122,8 @@ export const getRemoteThemes = () => async dispatch => {
     green: {
       name: 'Green',
       dark: '',
-      normal: '#2ECC40',
-      light: ''
+      normal: colors.green,
+      light: colors.lightGreen
     }
   };
 

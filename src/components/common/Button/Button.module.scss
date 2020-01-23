@@ -1,5 +1,5 @@
 @import '../../../styles/colors.scss';
-@import '../../../styles/mixins.scss';
+@import '../../../styles/themes.scss';
 
 .button {
   align-items: center;
@@ -31,6 +31,8 @@
     opacity: 1;
     transform: scale(1.1);
   }
+
+  @include buttonColors();
 }
 
 .disabled {

@@ -29,7 +29,6 @@ const NewGame = ({ numGames, player1, player2, isCreatingGame, updateConfig, cre
               styles.gameTypeButton
             ].join(' ')}
             onClick={() => updateConfig(NUM_GAMES, 3)}
-            disabled
             selected={numGames === 3}
           >
             Best of 3
@@ -40,7 +39,6 @@ const NewGame = ({ numGames, player1, player2, isCreatingGame, updateConfig, cre
               styles.gameTypeButton
             ].join(' ')}
             onClick={() => updateConfig(NUM_GAMES, 5)}
-            disabled
             selected={numGames === 5}
           >
             Best of 5
@@ -73,6 +71,7 @@ const NewGame = ({ numGames, player1, player2, isCreatingGame, updateConfig, cre
           ].join(' ')}
           onClick={() => createGame(player1, player2)}
           disabled={!player1 || !player2 || isCreatingGame}
+          applyTheme={false}
         >
           {isCreatingGame ? 'Creating Game...' : 'Start Game'}
         </Button>

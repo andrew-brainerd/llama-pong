@@ -36,7 +36,7 @@ const initialState = {
   themes: {}
 };
 
-export default function pong(state = initialState, action) {
+export default function pong (state = initialState, action) {
   switch (action.type) {
     case SET_PAGE_TITLE:
       return {

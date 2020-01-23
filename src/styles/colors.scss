@@ -1,15 +1,15 @@
-$brown: rgba(255, 133, 27, 0.5);
-$brownLight: rgba($brown, 0.7);
-
-$yellow: rgba(255, 223, 26, 1);
-$yellowLight: rgba($yellow, 0.7);
-
-$blue: rgba(18, 40, 178, 1);
-$blueLight: rgba($blue, 0.7);
-
-$purple: rgba(77, 39, 122, 0.5);
-$purpleLight: rgba(67, 34, 105, 1);
-
+$red: #ff4136;
+$redLight: #ff544a;
+$yellow: #ffe332;
+$yellowLight: #ffe64c;
+$green: #2ecc40;
+$greenLight: #42d153;
+$teal: #33b7b7;
+$tealLight: #39cccc;
+$blue: #0074d9;
+$blueLight: #1981dc;
+$purple: #4d277a;
+$purpleLight: #5e3c87;
 $gray-0: #ffffff;
 $gray-2-5: #f9f9f9;
 $gray-5: #f2f2f2;
@@ -34,16 +34,16 @@ $gray-90: #191919;
 $gray-95: #0d0d0d;
 $gray-100: #000000;
 
+$primaryTextColor: #f2ecf9;
+$secondaryTextColor: $gray-80;
+
 $paddle-red: #db4b40;
 $paddle-gray: #57524e;
 $paddle-ball: #fff2d9;
 
 $primaryColor: $gray-90;
-$primaryTextColor: #f2ecf9;
-
 $secondaryColor: $purple;
 $secondaryColorLight: $purpleLight;
-
 $tertiaryColor: #6785a3;
 
 $modalBackground: #454545;
@@ -65,10 +65,14 @@ $success-green-5: rgba(40, 143, 48, 0.5);
   darkText: $gray-85;
   purple: $purple;
   lightPurple: $purpleLight;
-  brown: $brown;
-  lightBrown: $brownLight;
+  red: $red;
+  lightRed: $redLight;
   yellow: $yellow;
   lightYellow: $yellowLight;
+  teal: $teal;
+  lightTeal: $tealLight;
   blue: $blue;
   lightBlue: $blueLight;
+  green: $green;
+  lightGreen: $greenLight;
 }

@@ -16,7 +16,7 @@ const Settings = ({ remoteThemes, getRemoteThemes }) => {
   return (
     <div className={styles.settings}>
       {keys(swatches).map(key => {
-        const { name, normal } = swatches[key];
+        const { name, normal, light } = swatches[key];
         return (
           <div
             key={key}
@@ -24,7 +24,7 @@ const Settings = ({ remoteThemes, getRemoteThemes }) => {
               styles.swatch,
               name === theme.name ? styles.selected : ''
             ].join(' ')}
-            style={{ background: normal }}
+            style={{ background: light || normal }}
             onClick={() => setTheme(swatches[key])}
           ></div>
         );

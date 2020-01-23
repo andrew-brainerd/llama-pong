@@ -29,6 +29,7 @@ const Modal = ({
           className={styles.closeButton}
           text={'X'}
           onClick={closeModal}
+          applyTheme={false}
         />
       </div>
       <div className={styles.content}>
