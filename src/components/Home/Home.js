@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react';
 import { func } from 'prop-types';
 import { ThemeContext } from '../App/App';
 import { NEW_GAME_ROUTE, LOAD_GAME_ROUTE } from '../../constants/routes';
+import AppIcon from '../common/AppIcon/AppIcon';
 import Button from '../common/Button/Button';
-import logo from '../../img/logo.png';
 import styles from './Home.module.scss';
 import SettingsModal from '../SettingsModal/SettingsModal';
 
@@ -15,7 +15,7 @@ const Home = ({ navTo }) => {
     <div className={styles.home}>
       <h1 style={{ color: theme.light }}>LLama Pong</h1>
       <div className={styles.logo}>
-        <img src={logo} alt='LLama Pong Logo' />
+        <AppIcon />
       </div>
       <div className={styles.buttonContainer}>
         <Button

@@ -40,14 +40,13 @@
     transition: 0.5s all;
   }
 
-  .logo {
+  svg {
     width: 70px;
     pointer-events: none;
     position: relative;
     left: 5px;
     top: 10px;
-    animation: fadeIn 2s;
-    -webkit-animation: fadeIn 2s;
+    transition: 0.2s fill;
   }
 }
 
@@ -57,7 +56,7 @@
       display: none;
     }
 
-    .logo {
+    svg {
       top: 2px;
     }
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import { bool, string, func } from 'prop-types';
 import { HOME_ROUTE } from '../../../constants/routes';
 import Notification from '../Notification/container';
-import logo from '../../../img/logo.png';
+import AppIcon from '../AppIcon/AppIcon';
 import styles from './Header.module.scss';
 
 const Header = ({ isVisible, pageTitle, navTo }) => {
@@ -10,7 +10,7 @@ const Header = ({ isVisible, pageTitle, navTo }) => {
     <div className={styles.header}>
       <div className={styles.headerContent}>
         <div className={styles.homeLink} onClick={() => navTo(HOME_ROUTE)}>
-          <img src={logo} className={styles.logo} alt="logo" />
+          <AppIcon />
           <div className={styles.headerTitle}>LLama Pong</div>
           {pageTitle && <><hr /><div className={styles.headerTitle}>{pageTitle}</div></>}
         </div>
