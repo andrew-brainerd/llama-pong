@@ -1,5 +1,6 @@
 import React from 'react';
 import { bool, func, string, node } from 'prop-types';
+import Draggable from 'react-draggable';
 import ReactModal from 'react-modal';
 import Button from '../Button/Button';
 import styles from './Modal.module.scss';
@@ -23,18 +24,22 @@ const Modal = ({
       contentLabel={'Pod Preview'}
       closeTimeoutMS={200}
     >
-      <div className={styles.header}>
-        <div className={styles.headerText}>{headerText}</div>
-        <Button
-          className={styles.closeButton}
-          text={'X'}
-          onClick={closeModal}
-          applyTheme={false}
-        />
-      </div>
-      <div className={styles.content}>
-        {children}
-      </div>
+      <Draggable>
+        <div className={styles.draggable}>
+          <div className={styles.header}>
+            <div className={styles.headerText}>{headerText}</div>
+            <Button
+              className={styles.closeButton}
+              text={'X'}
+              onClick={closeModal}
+              applyTheme={false}
+            />
+          </div>
+          <div className={styles.content}>
+            {children}
+          </div>
+        </div>
+      </Draggable>
     </ReactModal>
   );
 };

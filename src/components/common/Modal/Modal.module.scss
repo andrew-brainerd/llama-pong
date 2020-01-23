@@ -11,6 +11,10 @@
   position: relative;
   width: 70%;
 
+  .draggable {
+    display: block;
+  }
+
   .header {
     align-items: center;
     background: $modalBackground;
