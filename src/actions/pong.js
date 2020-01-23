@@ -3,6 +3,7 @@ import { navTo } from '../actions/routing';
 import { PLAYER1, PLAYER2 } from '../constants/pong';
 import { GAME_ROUTE } from '../constants/routes';
 import { getConfiguration, getGameId, getCurrentScore } from '../selectors/pong';
+import wait from '../utils/wait';
 
 export const SET_PAGE_TITLE = 'SET_PAGE_TITLE';
 export const CREATING_GAME = 'CREATING_GAME';
@@ -18,6 +19,8 @@ export const START_GAME = 'START_GAME';
 export const UPDATING_SCORE = 'UPDATING_SCORE';
 export const SCORE_UPDATED = 'SCORE_UPDATED';
 export const RESET_PLAYERS = 'RESET_PLAYERS';
+export const LOADING_THEMES = 'LOADING_THEMES';
+export const THEMES_LOADED = 'THEMES_LOADED';
 
 export const setPageTitle = title => ({ type: SET_PAGE_TITLE, title });
 
@@ -46,6 +49,10 @@ export const updatingScore = { type: UPDATING_SCORE };
 export const scoreUpdated = (playerNum, newScore) => ({ type: SCORE_UPDATED, playerNum, newScore });
 
 export const resetPlayers = { type: RESET_PLAYERS };
+
+export const loadingThemes = { type: LOADING_THEMES };
+
+export const themesLoaded = themes => ({ type: THEMES_LOADED, themes });
 
 export const createGame = (player1, player2) => async dispatch => {
   dispatch(creatingGame);
@@ -104,4 +111,20 @@ export const setPlayer = (playerNum, playerId) => async dispatch => {
   pong.getPlayer(playerId).then(player => {
     dispatch(updateConfig(playerNum === 1 ? PLAYER1 : PLAYER2, player));
   });
+};
+
+export const getRemoteThemes = () => async dispatch => {
+  dispatch(loadingThemes);
+  await wait(1000);
+
+  const themes = {
+    green: {
+      name: 'Green',
+      dark: '',
+      normal: '#2ECC40',
+      light: ''
+    }
+  };
+
+  dispatch(themesLoaded(themes));
 };

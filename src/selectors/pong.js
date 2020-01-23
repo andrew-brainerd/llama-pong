@@ -17,3 +17,5 @@ export const getScoreboard = path(['pong', 'scoreboard']);
 export const getCurrentScore = compose(prop('currentScore'), getScoreboard);
 
 export const getPageTitle = path(['pong', 'pageTitle']);
+
+export const getThemes = path(['pong', 'themes']);

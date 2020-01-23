@@ -1,32 +1,41 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { object, func } from 'prop-types';
 import { keys } from 'ramda';
 import { ThemeContext } from '../App/App';
 import themes from '../../styles/themes';
 import styles from './Settings.module.scss';
 
-const Settings = () => {
+const Settings = ({ remoteThemes, getRemoteThemes }) => {
   const { theme, setTheme } = useContext(ThemeContext);
+  const swatches = { ...themes, ...remoteThemes };
+
+  useEffect(() => {
+    getRemoteThemes();
+  }, [getRemoteThemes]);
 
   return (
     <div className={styles.settings}>
-      {keys(themes).map(key => {
-        const { name, normal } = themes[key];
+      {keys(swatches).map(key => {
+        const { name, normal } = swatches[key];
         return (
           <div
             key={key}
             className={[
-              styles.theme,
+              styles.swatch,
               name === theme.name ? styles.selected : ''
             ].join(' ')}
-            onClick={() => setTheme(themes[key])}
-          >
-            <div className={styles.name}>{name}</div>
-            <div className={styles.swatch} style={{ background: normal }}></div>
-          </div>
+            style={{ background: normal }}
+            onClick={() => setTheme(swatches[key])}
+          ></div>
         );
       })}
     </div>
   );
+};
+
+Settings.propTypes = {
+  remoteThemes: object,
+  getRemoteThemes: func.isRequired
 };
 
 export default Settings;

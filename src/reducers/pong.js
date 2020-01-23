@@ -11,7 +11,9 @@ import {
   UPDATING_SCORE,
   SCORE_UPDATED,
   START_GAME,
-  RESET_PLAYERS
+  RESET_PLAYERS,
+  LOADING_THEMES,
+  THEMES_LOADED
 } from '../actions/pong';
 
 const initialState = {
@@ -30,10 +32,11 @@ const initialState = {
       [PLAYER1]: 0,
       [PLAYER2]: 0
     }
-  }
+  },
+  themes: {}
 };
 
-export default function pong (state = initialState, action) {
+export default function pong(state = initialState, action) {
   switch (action.type) {
     case SET_PAGE_TITLE:
       return {
@@ -124,6 +127,17 @@ export default function pong (state = initialState, action) {
           [PLAYER1]: null,
           [PLAYER2]: null
         }
+      };
+    case LOADING_THEMES:
+      return {
+        ...state,
+        isLoadingThemes: true
+      };
+    case THEMES_LOADED:
+      return {
+        ...state,
+        isLoadingThemes: false,
+        themes: action.themes
       };
     default:
       return state;

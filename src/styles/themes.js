@@ -19,11 +19,10 @@ export default {
     normal: colors.purple,
     light: colors.lightPurple
   },
-  orange: {
-    name: 'Orange',
-    color: colors.darkText,
-    normal: colors.orange,
-    light: colors.lightOrange
+  brown: {
+    name: 'Brown',
+    normal: colors.brown,
+    light: colors.lightBrown
   },
   yellow: {
     name: 'Yellow',
