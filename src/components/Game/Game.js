@@ -32,6 +32,14 @@ const Game = ({ height, pathname, player1, player2, scoreboard, isLoadingGame, l
 Game.propTypes = {
   height: number,
   pathname: string,
+  player1: shape({
+    _id: string,
+    name: string
+  }),
+  player2: shape({
+    _id: string,
+    name: string
+  }),
   scoreboard: shape({
     currentScore: shape({
       player1: number,

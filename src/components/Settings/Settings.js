@@ -10,7 +10,7 @@ const Settings = () => {
   return (
     <div className={styles.settings}>
       {keys(themes).map(key => {
-        const { name, dark, normal, light } = themes[key];
+        const { name, normal } = themes[key];
         return (
           <div
             key={key}

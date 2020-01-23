@@ -74,7 +74,7 @@ const NewGame = ({ numGames, player1, player2, isCreatingGame, updateConfig, cre
           onClick={() => createGame(player1, player2)}
           disabled={!player1 || !player2 || isCreatingGame}
         >
-          Start Game
+          {isCreatingGame ? 'Creating Game...' : 'Start Game'}
         </Button>
       </div>
       {isModalOpen &&

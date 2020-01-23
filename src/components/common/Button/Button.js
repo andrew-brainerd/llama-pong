@@ -17,7 +17,8 @@ const Button = ({ children, className, selected, disabled, onClick, text }) => {
         styles.button,
         selected ? styles.selected : '',
         disabled ? styles.disabled : '',
-        className
+        className,
+        styles[theme.name]
       ].join(' ')}
       onClick={!disabled ? onClick : noop}
       style={themeStyles}
@@ -25,11 +26,12 @@ const Button = ({ children, className, selected, disabled, onClick, text }) => {
       {children || text}
     </div>
   );
-}
+};
 
 Button.propTypes = {
   children: node,
   className: string,
+  selected: bool,
   disabled: bool,
   onClick: func.isRequired,
   text: string
