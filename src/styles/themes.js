@@ -25,6 +25,11 @@ export default {
     normal: colors.yellow,
     light: colors.lightYellow
   },
+  green: {
+    name: 'Green',
+    normal: colors.green,
+    light: colors.lightGreen
+  },
   teal: {
     name: 'Teal',
     normal: colors.teal,
@@ -39,5 +44,5 @@ export default {
     name: 'Purple',
     normal: colors.purple,
     light: colors.lightPurple
-  },
+  }
 };

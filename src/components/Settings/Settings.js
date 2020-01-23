@@ -1,22 +1,16 @@
-import React, { useContext, useEffect } from 'react';
-import { object, func } from 'prop-types';
+import React, { useContext } from 'react';
 import { keys } from 'ramda';
 import { ThemeContext } from '../App/App';
 import themes from '../../styles/themes';
 import styles from './Settings.module.scss';
 
-const Settings = ({ remoteThemes, getRemoteThemes }) => {
+const Settings = () => {
   const { theme, setTheme } = useContext(ThemeContext);
-  const swatches = { ...themes, ...remoteThemes };
-
-  useEffect(() => {
-    getRemoteThemes();
-  }, [getRemoteThemes]);
 
   return (
     <div className={styles.settings}>
-      {keys(swatches).map(key => {
-        const { name, normal, light } = swatches[key];
+      {keys(themes).map(key => {
+        const { name, normal, light } = themes[key];
         return (
           <div
             key={key}
@@ -25,17 +19,12 @@ const Settings = ({ remoteThemes, getRemoteThemes }) => {
               name === theme.name ? styles.selected : ''
             ].join(' ')}
             style={{ background: light || normal }}
-            onClick={() => setTheme(swatches[key])}
+            onClick={() => setTheme(themes[key])}
           ></div>
         );
       })}
     </div>
   );
-};
-
-Settings.propTypes = {
-  remoteThemes: object,
-  getRemoteThemes: func.isRequired
 };
 
 export default Settings;

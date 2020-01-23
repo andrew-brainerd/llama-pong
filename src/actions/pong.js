@@ -3,8 +3,6 @@ import { navTo } from '../actions/routing';
 import { PLAYER1, PLAYER2 } from '../constants/pong';
 import { GAME_ROUTE } from '../constants/routes';
 import { getConfiguration, getGameId, getCurrentScore } from '../selectors/pong';
-import wait from '../utils/wait';
-import colors from '../styles/colors.scss';
 
 export const SET_PAGE_TITLE = 'SET_PAGE_TITLE';
 export const CREATING_GAME = 'CREATING_GAME';
@@ -112,20 +110,4 @@ export const setPlayer = (playerNum, playerId) => async dispatch => {
   pong.getPlayer(playerId).then(player => {
     dispatch(updateConfig(playerNum === 1 ? PLAYER1 : PLAYER2, player));
   });
-};
-
-export const getRemoteThemes = () => async dispatch => {
-  dispatch(loadingThemes);
-  await wait(1000);
-
-  const themes = {
-    green: {
-      name: 'Green',
-      dark: '',
-      normal: colors.green,
-      light: colors.lightGreen
-    }
-  };
-
-  dispatch(themesLoaded(themes));
 };
