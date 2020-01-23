@@ -1,4 +1,5 @@
 @import '../../../styles/mixins.scss';
+@import '../../../styles/themes.scss';
 
 .textInputContainer {
   position: relative;
@@ -6,6 +7,7 @@
 
   .textInput {
     @include defaultInput();
+    @include inputColors();
 
     font-size: 1.5em;
     text-align: center;

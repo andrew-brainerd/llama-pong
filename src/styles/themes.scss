@@ -72,3 +72,31 @@
     }
   }
 }
+
+@mixin inputColors {
+  &.purple {
+    background: $purpleLight;
+  }
+
+  &.red {
+    background: $redLight
+  }
+
+  &.yellow {
+    background: $yellowLight;
+    color: $secondaryTextColor;
+  }
+
+  &.teal {
+    background: $tealLight;
+  }
+
+  &.blue {
+    background: $blueLight;
+  }
+
+  &.green {
+    background: $greenLight;
+  }
+}
+

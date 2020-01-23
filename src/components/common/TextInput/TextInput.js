@@ -1,9 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import { string, func } from 'prop-types';
+import { toLower } from 'ramda';
+import { ThemeContext } from '../../App/App';
 import noop from '../../../utils/noop';
 import styles from './TextInput.module.scss';
 
 const TextInput = ({ placeholder, value, inputClassName, error, onChange, onPressEnter, onFocus, onBlur }) => {
+  const { theme } = useContext(ThemeContext);
   const [val, setVal] = useState(value || '');
   const [inputError, setInputError] = useState(null);
   const inputRef = useRef();
@@ -34,7 +37,8 @@ const TextInput = ({ placeholder, value, inputClassName, error, onChange, onPres
         type={'text'}
         className={[
           styles.textInput,
-          inputClassName || ''
+          inputClassName || '',
+          styles[toLower(theme.name)]
         ].join(' ')}
         placeholder={placeholder || ''}
         ref={inputRef}

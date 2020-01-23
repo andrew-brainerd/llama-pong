@@ -18,7 +18,7 @@ const NewGame = ({ numGames, player1, player2, isCreatingGame, updateConfig, cre
               styles.button,
               styles.gameTypeButton
             ].join(' ')}
-            onClick={() => updateConfig(NUM_GAMES, 1)}
+            onClick={() => numGames !== 1 && updateConfig(NUM_GAMES, 1)}
             selected={numGames === 1}
           >
             1 Game
@@ -28,7 +28,7 @@ const NewGame = ({ numGames, player1, player2, isCreatingGame, updateConfig, cre
               styles.button,
               styles.gameTypeButton
             ].join(' ')}
-            onClick={() => updateConfig(NUM_GAMES, 3)}
+            onClick={() => numGames !== 3 && updateConfig(NUM_GAMES, 3)}
             selected={numGames === 3}
           >
             Best of 3
@@ -38,7 +38,7 @@ const NewGame = ({ numGames, player1, player2, isCreatingGame, updateConfig, cre
               styles.button,
               styles.gameTypeButton
             ].join(' ')}
-            onClick={() => updateConfig(NUM_GAMES, 5)}
+            onClick={() => numGames !== 5 && updateConfig(NUM_GAMES, 5)}
             selected={numGames === 5}
           >
             Best of 5
