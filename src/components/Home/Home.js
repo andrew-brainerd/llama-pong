@@ -1,13 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { func } from 'prop-types';
+import { ThemeContext } from '../App/App';
 import { NEW_GAME_ROUTE, LOAD_GAME_ROUTE } from '../../constants/routes';
 import Button from '../common/Button/Button';
 import logo from '../../img/logo.png';
 import styles from './Home.module.scss';
-import { ThemeContext } from '../App/App';
+import SettingsModal from '../SettingsModal/SettingsModal';
 
 const Home = ({ navTo }) => {
   const { theme } = useContext(ThemeContext);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div className={styles.home}>
@@ -18,18 +20,28 @@ const Home = ({ navTo }) => {
       <div className={styles.buttonContainer}>
         <Button
           className={styles.button}
+          text={'New Game'}
           onClick={() => navTo(NEW_GAME_ROUTE, 'New Game')}
-        >
-          New Game
-        </Button>
+        />
+        <Button
+          className={[styles.button, styles.settings].join(' ')}
+          text={'Settings'}
+          onClick={() => {
+            setIsModalOpen(true);
+          }}
+          applyTheme={false}
+        />
         <Button
           className={styles.button}
+          text={'Load Game'}
           onClick={() => navTo(LOAD_GAME_ROUTE, 'Load Existing Game')}
           disabled
-        >
-          Load Game
-        </Button>
+        />
       </div>
+      {isModalOpen &&
+        <SettingsModal
+          closeModal={() => setIsModalOpen(false)}
+        />}
     </div>
   );
 };

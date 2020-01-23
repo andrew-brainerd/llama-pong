@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { keys } from 'ramda';
-import { ThemeContext } from '../App/App';
-import themes from '../../styles/themes';
+import { ThemeContext } from '../../App/App';
+import themes from '../../../styles/themes';
 import styles from './Settings.module.scss';
 
 const Settings = () => {

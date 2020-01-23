@@ -1,7 +1,6 @@
 import React from 'react';
 import { bool, string, func } from 'prop-types';
 import { HOME_ROUTE } from '../../../constants/routes';
-import Settings from '../../Settings/Settings';
 import Notification from '../Notification/container';
 import logo from '../../../img/logo.png';
 import styles from './Header.module.scss';
@@ -19,7 +18,6 @@ const Header = ({ isVisible, pageTitle, navTo }) => {
           v{process.env.REACT_APP_VERSION}
         </div>
       </div>
-      <Settings />
       <Notification />
     </div>
   ) : null;

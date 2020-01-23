@@ -25,13 +25,13 @@
   }
 
   .buttonContainer {
+    align-items: center;
     display: flex;
     justify-content: center;
     margin: 50px 0;
 
     .button {
       align-items: center;
-      border-color: $secondaryColorLight;
       border-radius: 7px;
       display: flex;
       font-size: 2em;
@@ -41,12 +41,12 @@
       text-align: center;
       width: 250px;
 
-      &:hover {
-        border-color: $secondaryColor;
-      }
-
-      .buttonText {
-        font-style: italic;
+      &.settings {
+        background: $gray-80;
+        font-size: 1.5em;
+        height: 50px;
+        padding: 0;
+        width: 115px;
       }
     }
   }
