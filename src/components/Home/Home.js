@@ -21,7 +21,7 @@ const Home = ({ navTo }) => {
         <Button
           className={styles.button}
           text={'New Game'}
-          onClick={() => navTo(NEW_GAME_ROUTE, 'New Game')}
+          onClick={() => navTo(NEW_GAME_ROUTE)}
         />
         <Button
           className={[styles.button, styles.settings].join(' ')}
@@ -34,7 +34,7 @@ const Home = ({ navTo }) => {
         <Button
           className={styles.button}
           text={'Load Game'}
-          onClick={() => navTo(LOAD_GAME_ROUTE, 'Load Existing Game')}
+          onClick={() => navTo(LOAD_GAME_ROUTE)}
           disabled
         />
       </div>

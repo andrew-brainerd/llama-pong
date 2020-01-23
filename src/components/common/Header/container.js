@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  navTo: (path, title) => dispatch(navTo(path, title))
+  navTo: path => dispatch(navTo(path))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  navTo: (path, title) => dispatch(navTo(path, title)),
+  navTo: path => dispatch(navTo(path)),
   updateScore: (playerNum, newScore) => dispatch(updateScore(playerNum, newScore))
 });
 
