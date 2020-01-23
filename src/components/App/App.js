@@ -13,6 +13,7 @@ import Home from '../Home/container';
 import NewGame from '../NewGame/container';
 import Game from '../Game/container';
 import styles from './App.module.scss';
+import useLocalStorage from '../../hooks/useLocalStorage';
 
 export const ThemeContext = React.createContext({
   theme: {},
@@ -20,12 +21,18 @@ export const ThemeContext = React.createContext({
 });
 
 const App = ({ history }) => {
-  const [theme, setTheme] = useState(themes.purple);
+  const [storedTheme, setStoredTheme] = useLocalStorage('theme', themes.purple);
+  const [appTheme, setAppTheme] = useState(storedTheme);
+
+  const setTheme = theme => {
+    setStoredTheme(theme);
+    setAppTheme(theme);
+  };
 
   return (
     <div className={styles.app}>
       <ConnectedRouter history={history}>
-        <ThemeContext.Provider value={{ theme, setTheme }}>
+        <ThemeContext.Provider value={{ theme: appTheme, setTheme }}>
           <Header />
           <div className={styles.content}>
             <Switch>

@@ -14,11 +14,6 @@ Theme Object
 */
 
 export default {
-  purple: {
-    name: 'Purple',
-    normal: colors.purple,
-    light: colors.lightPurple
-  },
   red: {
     name: 'Red',
     normal: colors.red,
@@ -39,5 +34,10 @@ export default {
     name: 'Blue',
     normal: colors.blue,
     light: colors.lightBlue
-  }
+  },
+  purple: {
+    name: 'Purple',
+    normal: colors.purple,
+    light: colors.lightPurple
+  },
 };
