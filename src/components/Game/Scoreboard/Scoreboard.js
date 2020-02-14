@@ -10,7 +10,7 @@ const Scoreboard = ({ height, player1, player2, currentScore, updateScore }) => 
 
   return (
     <div className={styles.scoreboard} style={{ height }}>
-      <div className={styles.playerScore}>
+      <div className={[styles.playerScore, styles.player1Score].join(' ')}>
         <div className={styles.playerName}>{player1Name}</div>
         <div
           className={styles.incrementScore}
@@ -28,8 +28,7 @@ const Scoreboard = ({ height, player1, player2, currentScore, updateScore }) => 
           <div className={styles.arrow}>&gt;</div>
         </div>
       </div>
-      <hr style={{ height: height - 10 }} />
-      <div className={styles.playerScore}>
+      <div className={[styles.playerScore, styles.player2Score].join(' ')}>
         <div className={styles.playerName}>{player2Name}</div>
         <div
           className={styles.incrementScore}

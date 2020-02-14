@@ -24,6 +24,14 @@
     justify-content: center;
     width: 50%;
 
+    &.player1Score {
+      border-right: 1px solid white;
+    }
+
+    &.player2Score {
+      border-left: 1px solid white;
+    }
+
     .incrementScore,
     .decrementScore {
       border: 1px solid transparent;
@@ -65,17 +73,25 @@
     }
 
     .score {
+      align-items: center;
       font-family: 'Roboto Mono';
       font-size: 25em;
-      margin: 50px auto;
+      display: flex;
+      justify-content: center;
       text-align: center;
       user-select: none;
       width: 95%;
     }
   }
+}
 
-  hr {
-    height: 550px;
-    width: 5px;
+@media screen and (max-width: $mobileWidth) {
+  .scoreboard {
+    .playerScore {
+      .score {
+        font-size: 30vw;
+        height: 200px;
+      }
+    }
   }
 }

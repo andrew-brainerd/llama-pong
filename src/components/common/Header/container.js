@@ -7,7 +7,6 @@ import Header from './Header';
 
 const mapStateToProps = state => ({
   isVisible: getPathname(state) !== HOME_ROUTE,
-  pathname: getPathname(state),
   pageTitle: getPageTitle(state)
 });
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { number, shape, string, bool, func } from 'prop-types';
 import { NUM_GAMES } from '../../constants/pong';
+import Header from '../common/Header/container';
 import Button from '../common/Button/Button';
 import PlayerModal from '../Players/PlayerModal/container';
 import styles from './NewGame.module.scss';
@@ -11,6 +12,7 @@ const NewGame = ({ numGames, player1, player2, isCreatingGame, updateConfig, cre
 
   return (
     <>
+      <Header />
       <div className={styles.newGame}>
         <div className={styles.buttonContainer}>
           <Button

@@ -3,7 +3,6 @@ import { object } from 'prop-types';
 import { ConnectedRouter } from 'connected-react-router';
 import { Route, Switch } from 'react-router-dom';
 import themes from '../../styles/themes';
-import Header from '../common/Header/container';
 import {
   HOME_ROUTE,
   NEW_GAME_ROUTE,
@@ -33,7 +32,6 @@ const App = ({ history }) => {
     <div className={styles.app}>
       <ConnectedRouter history={history}>
         <ThemeContext.Provider value={{ theme: appTheme, setTheme }}>
-          <Header />
           <div className={styles.content}>
             <Switch>
               <Route path={HOME_ROUTE} exact component={Home} />
