@@ -8,6 +8,7 @@ import './Modal.css';
 
 const Modal = ({
   isOpen,
+  isDraggable,
   onOpen,
   closeModal,
   headerText,
@@ -24,7 +25,7 @@ const Modal = ({
       contentLabel={'Pod Preview'}
       closeTimeoutMS={200}
     >
-      <Draggable>
+      <Draggable disabled={!isDraggable}>
         <div className={styles.draggable}>
           <div className={styles.header}>
             <div className={styles.headerText}>{headerText}</div>
@@ -46,11 +47,16 @@ const Modal = ({
 
 Modal.propTypes = {
   isOpen: bool.isRequired,
+  isDraggable: bool,
   onOpen: func,
   closeModal: func.isRequired,
   headerText: string,
   children: node,
   className: string
 };
+
+Modal.defaultProps = {
+  isDraggable: true
+}
 
 export default Modal;

@@ -18,6 +18,7 @@ const PlayerModal = ({ playerNum, closeModal, setPlayer }) => {
     <Modal
       className={styles.newPlayerModal}
       isOpen
+      isDraggable={!isMobile}
       closeModal={() => {
         setIsNewPlayer(null);
         setIsExistingPlayer(null);
